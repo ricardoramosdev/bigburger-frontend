@@ -1,12 +1,20 @@
+
+
 .logo{
     height: 3rem;
 }
 .ant-layout-header {
     padding: 0px !important;
 }
-.ant-menu.ant-menu-dark{
+.ant-menu.ant-menu-dark, .ant-layout-sider{
   background-color:#211d1d!important;
 }
-.ant-menu-item-selected, .ant-menu-item:hover{
+.ant-menu-item-selected, .ant-menu-item:hover {
   background-color:#f4e038 !important ;
+}
+.ant-switch-checked{
+  background-color: #f08c2b !important;
+}
+.fullHeight{
+  min-height: 100vh;
 }

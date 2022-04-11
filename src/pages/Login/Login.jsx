@@ -1,7 +1,8 @@
 import { Button, Checkbox, Form, Input, Modal } from "antd";
 import React, { useState } from "react";
-import logo from '../../assets/img/logo.jpg'
-// import { Register } from "./Register";
+import logo from '../../assets/img/logo-transparente.png'
+import { Header } from "../../shared/Header/Header";
+import  "./Login.scss"
 
 export const Login = () => {
   
@@ -30,10 +31,12 @@ export const Login = () => {
   // const login = async
   return (
     <>
-      <div>
+    
+      <div className="logoContainer">
         <img src={logo} alt="big burguer logo" />
       </div>
-      <Form
+      <div className="formContainer">
+      <Form 
         name="basic"
         labelCol={{
           span: 8,
@@ -103,6 +106,8 @@ export const Login = () => {
           </Button>
         </Form.Item>
       </Form>
+      </div>
+      
 
       <Modal
         title="Register"
