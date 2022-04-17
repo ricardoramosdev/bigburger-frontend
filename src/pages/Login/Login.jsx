@@ -3,9 +3,17 @@ import React, { useState } from "react";
 import logo from '../../assets/img/logo-transparente.png'
 import { Header } from "../../shared/Header/Header";
 import  "./Login.scss"
+import { URL } from "../../constants/endpoints";
+import axios from "axios";
+import { useAuth } from "../../auth/useAuth";
+
 
 export const Login = () => {
   
+  const auth = useAuth();
+  const onLogin = async (loginData)=>{
+    auth.login(loginData)
+  }
   const [isModalVisible, setIsModalVisible] = useState(false);
   const validationOn = true;
   const showModal = () => {
@@ -18,15 +26,15 @@ export const Login = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
-  const registerUser = async (formData) =>{
+  async function registerUser(formData){
     console.log(formData)
-    // try{
-    //   const { data } =await axios.post(`${URL}/users`, formData)
-
-    // }catch(error){
-    //   alert("Error al registrar usuario")
-    // }
+    try{
+      const userRegister =await axios.post(`${URL}/user`, formData)
+      console.log(userRegister)
+    }catch(error){
+      console.log(error)
+      alert("Error al registrar usuario")
+    }
   }
   // const login = async
   return (
@@ -48,6 +56,8 @@ export const Login = () => {
           remember: true,
         }}
         autoComplete="off"
+        className=" formBlock"
+        onFinish={onLogin}
       >
         <Form.Item
           label="Username"
@@ -81,7 +91,7 @@ export const Login = () => {
             span: 16,
           }}
         >
-          {/* <a onClick={showModal}>Register</a> */}
+          <a onClick={showModal}>Register</a>
           
         </Form.Item>
         <Form.Item
@@ -124,9 +134,9 @@ export const Login = () => {
           autoComplete="off"
         >
           <Form.Item
-            label="Name"
-            name="name"
-            rules={[{ required: validationOn, message: "Please input your name!" }]}
+            label="Nombre Completo"
+            name="fullName"
+            rules={[{ required: validationOn, message: "Please input your full name!" }]}
           >
             <Input />
           </Form.Item>
@@ -139,7 +149,7 @@ export const Login = () => {
           </Form.Item>
 
           <Form.Item
-            label="Password"
+            label="Contraseña"
             name="password"
             rules={[{ required: validationOn, message: "Please input your password!" }]}
           >

@@ -1,23 +1,23 @@
 
 import { Route, Routes } from "react-router-dom"
+import { AuthProvider } from "./auth/AuthProvider";
 import { Home } from "./pages/Home/Home"
 import { Login } from "./pages/Login/Login"
+import { PrivateRoute } from "./routers/PrivateRoute";
 
 
 export const App = () =>{
-  const user = JSON.parse(localStorage.getItem('user'))||{
-    name:'Juan Perez',
-    role:'ADMIN_ROLE',
-    email:'juanperez@hotmail.com'
-};
+
   return(
     <>
-     <Routes>
-        <Route path="" element={<Login/>}/>
-        <Route path="/home" element={<Home user={user}/>}/>
-        
+    <AuthProvider>
+      <Routes>
+          <Route exact path="/login" element={<Login/>}/>
+          <Route path="/*" element={<PrivateRoute><Home /></PrivateRoute>}/>
+          
 
-      </Routes>
+        </Routes>
+      </AuthProvider>
     </>
   )
 }

@@ -1,0 +1,1 @@
+const ContextTheme = React.createContext
