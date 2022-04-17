@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Input, Modal } from "antd";
 import React, { useState } from "react";
 import logo from '../../assets/img/logo.jpg'
-// import { Register } from "./Register";
+
 
 export const Login = () => {
   
@@ -22,7 +22,7 @@ export const Login = () => {
     console.log(formData)
     // try{
     //   const { data } =await axios.post(`${URL}/users`, formData)
-
+   
     // }catch(error){
     //   alert("Error al registrar usuario")
     // }
