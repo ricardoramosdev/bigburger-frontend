@@ -3,12 +3,14 @@ import { Form, Input, Button, Select, InputNumber, Switch, Row, Col, Modal, } fr
 import axios from 'axios';
 import TextArea from 'antd/lib/input/TextArea';
 import { CloseOutlined } from '@ant-design/icons';
+import { URL } from '../../../constants/endpoints'
 const { Option } = Select;
-const URL = 'http://localhost:3100/api'
+
 
 
 export const ProductsAdd = ({ addProduct }) => {
     const addNewProduct = async (formData) => {
+        console.log(formData)
         try {
             const { data } = await axios.post(`${URL}/product`, formData );
             console.log('dataOne', data.nuevoProducto)

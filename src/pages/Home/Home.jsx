@@ -1,32 +1,46 @@
-
-
 import { Layout } from "antd";
-import { Content } from "antd/lib/layout/layout";
 
-import Sider from "antd/lib/layout/Sider";
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { Footer } from "../../shared/Footer/Footer";
 import { Header } from "../../shared/Header/Header";
 import { Sidebar } from "../../shared/Sidebar/Sidebar";
-import { ProductList } from "../Products/ProductsList/ProductList";
+import { Products } from "../Products/Products";
+import { UserList } from "../Users/UserList/UserList";
 import "./Home.scss";
 
-export const Home = () => {
- 
+const {  Content, Sider } = Layout;
+export const Home = ({ user, ...props }) => {
   return (
     <>
       <Layout style={{ minHeight: "100vh" }}>
-        <Header />
-        <Sider >
-          {/* <Sidebar /> */}
-        </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
+        <Header user={user} />
+        <Layout className="fullHeight">
+          <Sider className="fullHeight">
+            <Sidebar user={user} />
+          </Sider>
+          <Layout>
+
+          <Content className="site-layout-background"
+          style={{
+            padding: 24,
+            margin: 0,
+            minHeight: 280,
+          }}>
+            <Products/>
+            <UserList/>
+            {/* <Routes>
+               <Route path="/products" element={}/>
+               <Route path="/users" element={}/>
+
+            
+            </Routes> */}
           
-          <Content className="site-layout-background" style={{padding: 24,margin: 0,minHeight: 280}}>
-
-            <ProductList/>
-
           </Content>
+
+          </Layout>
         </Layout>
+        <Footer/>
       </Layout>
     </>
   );
