@@ -2,9 +2,11 @@ import { Layout } from "antd";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { AdminRoute } from "../../routers/AdminRoute";
 import { Footer } from "../../shared/Footer/Footer";
 import { Header } from "../../shared/Header/Header";
 import { Sidebar } from "../../shared/Sidebar/Sidebar";
+import { Cart } from "../Orders/Cart";
 import { Products } from "../Products/Products";
 import { UserList } from "../Users/UserList/UserList";
 import "./Home.scss";
@@ -27,14 +29,16 @@ export const Home = ({ user, ...props }) => {
             margin: 0,
             minHeight: 280,
           }}>
-            <Products/>
-            <UserList/>
-            {/* <Routes>
-               <Route path="/products" element={}/>
-               <Route path="/users" element={}/>
+            <Routes>
+            
+               <Route path="/cart" element={<Cart />}/>
+               <Route path="/products" element={<AdminRoute><Products /></AdminRoute> }/>
+           
+               <Route path="/users" element={<AdminRoute><UserList /></AdminRoute> }/>
+               {/* <Route path="/orders" element={<AdminRoute><OrdersList /></AdminRoute> }/> */}
 
             
-            </Routes> */}
+            </Routes>
           
           </Content>
 

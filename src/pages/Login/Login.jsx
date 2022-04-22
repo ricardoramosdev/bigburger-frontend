@@ -72,6 +72,7 @@ export const Login = () => {
         <Form.Item
           label="Email"
           name={"email"}
+          initialValue="rr@admin.com"
           rules={[
             {
               required: validationOn,
@@ -85,6 +86,7 @@ export const Login = () => {
         <Form.Item
           label="Password"
           name={"password"}
+          initialValue="alfabeta"
           rules={[
             {
               required: validationOn,

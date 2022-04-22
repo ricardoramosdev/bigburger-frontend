@@ -5,5 +5,5 @@ import { useAuth } from '../auth/useAuth';
 export const PrivateRoute = ({children}) => {
 
     const auth = useAuth();
-  return auth.user ? children : <Navigate to="/login" replace/>
+  return auth.user||JSON.parse(localStorage.getItem('currentUser')) ? children : <Navigate to="/login" replace/>
 }
