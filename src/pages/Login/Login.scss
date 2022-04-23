@@ -1,3 +1,4 @@
+@import '../../Context/Themes.scss';
 .logoContainer{
     position: absolute;
     top: 50%;
@@ -16,7 +17,7 @@
     align-items: center;
     align-content: center;
     background-image: linear-gradient(
-    #7f3e1a 20%, #f08c2b 40%, #f4e038 60%, #f6f6f6 100%);
+    var(--color2) 20%, var(--color3) 40%, var(--color4) 60%, var(--color5) 100%);
     display: flex;
     .formBlock{
         background-color: rgba($color: white, $alpha: 0.6);

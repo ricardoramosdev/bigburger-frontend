@@ -18,7 +18,8 @@ export const App = () =>{
     <AuthProvider>
         <Routes>
           <Route exact path="/login" element={<Login/>}/>
-          <Route path="/*" element={<PrivateRoute><Home /></PrivateRoute>}/>
+          {/* <Route path="/*" element={<PrivateRoute><Home /></PrivateRoute>}/> */}
+          <Route exact path="/*" element={<Home />}/>
           
 
         </Routes>

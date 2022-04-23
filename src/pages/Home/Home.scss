@@ -1,4 +1,4 @@
-
+@import '../../Context/Themes.scss';
 
 .logo{
     height: 3rem;
@@ -10,10 +10,10 @@
   background-color:#211d1d!important;
 }
 .ant-menu-item-selected, .ant-menu-item:hover {
-  background-color:#f4e038 !important ;
+  background-color: var(--color4) !important ;
 }
 .ant-switch-checked{
-  background-color: #f08c2b !important;
+  background-color: var(--color3) !important;
 }
 .fullHeight{
   min-height: 100vh;
