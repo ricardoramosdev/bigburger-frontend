@@ -37,12 +37,12 @@ export const Sidebar = () => {
           <Link to ="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="2" icon={<ShoppingCartOutlined />} className="cart">
-        <Badge count={cart?.length} size="small">
           <Link to ="/cart">
+        <Badge count={cart?.length} size="small">
             Cart
-          {/* {cart ? <span className="noti-bubble"></span>: null} */}
-          </Link>
+          
         </Badge>
+          </Link>
         </Menu.Item>
 
         <Menu.Item key="3" icon={<SettingOutlined />} hidden={!adminRole} >
