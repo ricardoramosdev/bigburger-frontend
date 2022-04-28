@@ -42,11 +42,12 @@ export const Login = () => {
         okType: "ghost"
 
     })
+    onLogin(formData)
     }catch(err){
       console.log(err);
     }
   }
-  // const login = async
+ 
   return (
     <>
     
@@ -72,7 +73,7 @@ export const Login = () => {
         <Form.Item
           label="Email"
           name={"email"}
-          initialValue="rr@admin.com"
+          initialValue="admin@admin.com"
           rules={[
             {
               required: validationOn,
@@ -106,17 +107,7 @@ export const Login = () => {
           <a onClick={showModal}>Register</a>
           
         </Form.Item>
-        <Form.Item
-          name={"remember"}
-          valuePropName="checked"
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
+        
         <Form.Item
           wrapperCol={{
             offset: 8,
@@ -124,7 +115,7 @@ export const Login = () => {
           }}
         >
           <Button type="primary" htmlType="submit">
-            Submit
+            Login
           </Button>
         </Form.Item>
       </Form>

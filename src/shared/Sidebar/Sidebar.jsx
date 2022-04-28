@@ -8,7 +8,7 @@ import {
   UserSwitchOutlined,
 } from "@ant-design/icons";
 
-import { Menu, Switch, Tooltip } from "antd";
+import { Badge, Menu, Switch, Tooltip } from "antd";
 import { useAuth } from "../../auth/useAuth";
 import "./Sidebar.scss";
 import { AdminRoute } from "../../routers/AdminRoute";
@@ -16,7 +16,7 @@ import { Link, Router } from "react-router-dom";
 
 
 export const Sidebar = () => {
-  
+  const cart = JSON.parse(localStorage.getItem('inCart'))
   const auth = useAuth();
   const userLogout = ()=>{
     auth.logout()
@@ -37,9 +37,12 @@ export const Sidebar = () => {
           <Link to ="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="2" icon={<ShoppingCartOutlined />} className="cart">
-          <Link to ="/cart">Cart
-          <span className="noti-bubble"></span>
+        <Badge count={cart?.length} size="small">
+          <Link to ="/cart">
+            Cart
+          {/* {cart ? <span className="noti-bubble"></span>: null} */}
           </Link>
+        </Badge>
         </Menu.Item>
 
         <Menu.Item key="3" icon={<SettingOutlined />} hidden={!adminRole} >
@@ -55,7 +58,7 @@ export const Sidebar = () => {
           
         </Menu.Item>
          
-        <Menu.Item key="6" icon={<LogoutOutlined />} onClick={userLogout}>
+        <Menu.Item key="6" icon={<LogoutOutlined />} onClick={()=>userLogout()}>
           Logout
         </Menu.Item>
       </Menu>

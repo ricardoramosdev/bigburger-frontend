@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
     const navigate = useNavigate();
     // const [loginError, showLoginError] = useState(false)
     // const [errorMsg, setErrorMsg] = useState('')
