@@ -1,5 +1,5 @@
-import React, { createRef, useState } from 'react'
-import { Table, Button, Modal, Input, Form } from 'antd'
+import React from 'react'
+import { Table, Button, Image, Checkbox} from 'antd'
 import "antd/dist/antd.css"
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 
@@ -28,14 +28,24 @@ export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
             key: "price"
         },
         {
-            title: "Stock",
+            title: "Disponible",
             dataIndex: "stock",
             key: "stock",
+            render: (stock) => (
+                <Checkbox checked={stock}/>
+            )
         },
         {
             title: "Categoria",
             dataIndex: "categorie_id",
             key: "categorie_id"
+        },
+        {
+            title: "Imágen",
+            key: "price",
+            render: (fila) => (
+                <Image src={fila.IMG ? fila.IMG : null} width={150} height={100}/>
+            ) 
         },
         {
             title: "Acciones",
@@ -58,7 +68,7 @@ export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
         <>
             <br />
             <br />
-            <Table columns={columns} dataSource={productsDBToList} />
+            <Table columns={columns} dataSource={productsDBToList} className={"tabla"}/>
         </>
     )
 }

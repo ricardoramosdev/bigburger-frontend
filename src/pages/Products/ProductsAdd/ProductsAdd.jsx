@@ -30,7 +30,8 @@ export const ProductsAdd = ({ addProduct }) => {
 
     return (
         <Row>
-            <Col xs={18} lg={12} offset={6}>
+            <Col xs={18} lg={12} offset={6}  className='addProduct'>
+            <h1>Crear producto</h1>
                 <Form
                     layout='vertical'
                     name="product"
@@ -41,7 +42,7 @@ export const ProductsAdd = ({ addProduct }) => {
 
                         <Col xs={24} lg={24}>
                             {/* NOMBRE */}
-                            <Form.Item label="Nombre" name={"name"} rules={[{ required: true }]}>
+                            <Form.Item label="Nombre" name={"name"} rules={[{ maxlength: 60, minlength: 2  ,required: true }]}>
                                 <Input placeholder="Ingrese el nombre del producto" />
                             </Form.Item>
                         </Col>
@@ -50,6 +51,13 @@ export const ProductsAdd = ({ addProduct }) => {
                             {/* DESCRIPTION */}
                             <Form.Item label="Descripcion" name={"description"} rules={[{ maxlength: 250, required: true }]}>
                                 <TextArea placeholder="Ingrese la descripcion del producto" rows={3} />
+                            </Form.Item>
+                        </Col>
+
+                        <Col xs={24} lg={24}>
+                            {/* IMAGEN */}
+                            <Form.Item label="Imagen" name={"IMG"} rules={[{ required: true }]}>
+                                <Input placeholder="Ingrese la imagen del producto" />
                             </Form.Item>
                         </Col>
 
