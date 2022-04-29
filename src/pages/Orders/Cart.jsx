@@ -1,4 +1,5 @@
-import { Layout, PageHeader } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
+import { InputNumber, Layout, PageHeader } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { URL } from "../../constants/endpoints";
@@ -50,11 +51,28 @@ export const Cart = () => {
 
   const [order, setOrder] = useState(initialCart);
   localStorage.setItem("inCart", JSON.stringify(order));
+
+  //Eliminar item completo
   const removeFromCart = (id) => {
     const updateOrder = order.filter((item) => item._id !== id);
     setOrder(updateOrder);
+    totalToPay()
+
   };
-  console.log(order);
+  
+  //   Cambiar cantidad
+    const changeQuantity = (id,value)=>{
+    console.log(value , id)
+      const index=order.findIndex(item => item._id===id)
+      const item= order[index]
+      let item1={...item, cantidad:value}
+      console.log(item1)
+      order.splice(index,1,item1)
+      setOrder(order)
+      totalToPay()
+
+
+   }
 
   const[ total, updTotal]=useState(0)
   const totalToPay = ()=>{   
@@ -84,7 +102,29 @@ export const Cart = () => {
       <div className="order-body">
         <h2>Estas llevando:</h2>
         {order.map((item, index) => (
-          <CartItem data={item} index={index} key={item._id}removeFromCart={removeFromCart} total={totalToPay}/>
+          // <CartItem data={item} index={index} key={item._id}removeFromCart={removeFromCart} total={()=>totalToPay()} />
+          <div className='order-card'key={item._id} data={item} index={index} >
+          <img className='order-img'src='' alt='' />
+          <div className='order-detail'>
+              <h4>{item.name}</h4>
+              <div className='order-data'>
+                  <div className='item-price'>${item.price}</div>
+                  <div className='item-edit'>
+                      <label htmlFor="qty">Cantidad: </label>
+                      
+                      <InputNumber 
+                      min={1}
+                      defaultValue={item.cantidad}
+                      onChange={(value)=>changeQuantity(item._id,value)}
+                      />
+                      
+                      {/* <input qtyid={id} name='qty'type="number"  min='1'  defaultValue={data.cantidad} onChange={()=>changeQuantity(id)} /> */}
+                      
+                  </div>
+                  <button onClick={()=>removeFromCart(item._id)}><DeleteOutlined /></button>
+              </div>
+          </div>
+      </div>
         ))}
       </div>
       <div className="order-checkout">

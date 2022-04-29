@@ -1,12 +1,15 @@
 import { DeleteOutlined } from '@ant-design/icons'
+import { Form, InputNumber } from 'antd'
 import React from 'react'
 
+let order = JSON.parse(localStorage.getItem('inCart'))
 export const CartItem = ({data,index, removeFromCart,total}) => {
    let{_id:id, name,price,cantidad}=data
-    const changeQuantity = (id)=>{ console.log(data)
-     data.cantidad=data.cantidad+1
-     console.log(data)
-    }
+     //Cambiar cantidad
+  const changeQuantity = (value)=>{
+      data={...data, cantidad:value}
+    console.log(data)
+   }
     
   return (
       <>
@@ -19,7 +22,15 @@ export const CartItem = ({data,index, removeFromCart,total}) => {
                 <div className='item-price'>${price}</div>
                 <div className='item-edit'>
                     <label htmlFor="qty">Cantidad: </label>
-                    <input qtyid={id} name='qty'type="number"  min='1'  defaultValue={data.cantidad} onChange={()=>changeQuantity(id)} />
+                    
+                    <InputNumber 
+                    min={1}
+                    defaultValue={data.cantidad}
+                    // value
+                    onChange={(value)=>changeQuantity(value)}
+                    />
+                    
+                    {/* <input qtyid={id} name='qty'type="number"  min='1'  defaultValue={data.cantidad} onChange={()=>changeQuantity(id)} /> */}
                     
                 </div>
                 <button onClick={()=>removeFromCart(id)}><DeleteOutlined /></button>
