@@ -7,6 +7,7 @@ import { Footer } from "../../shared/Footer/Footer";
 import { Header } from "../../shared/Header/Header";
 import { Sidebar } from "../../shared/Sidebar/Sidebar";
 import { Cart } from "../Orders/Cart";
+import { OrderList } from "../Orders/OrderList/OrderList";
 import { Products } from "../Products/Products";
 import { UserList } from "../Users/UserList/UserList";
 import "./Home.scss";
@@ -35,7 +36,7 @@ export const Home = ({ user, ...props }) => {
                <Route path="/products" element={<AdminRoute><Products /></AdminRoute> }/>
            
                <Route path="/users" element={<AdminRoute><UserList /></AdminRoute> }/>
-               {/* <Route path="/orders" element={<AdminRoute><OrdersList /></AdminRoute> }/> */}
+               <Route path="/orders" element={<AdminRoute><OrderList /></AdminRoute> }/>
 
             
             </Routes>

@@ -5,7 +5,10 @@ import React, { useEffect, useState } from "react";
 import { URL } from "../../constants/endpoints";
 import "./Cart.scss";
 import { CartItem } from "./CartItem";
+import { useAuth } from "../../auth/useAuth";
 export const Cart = () => {
+const auth = useAuth()
+
   const initialCart = JSON.parse(localStorage.getItem("inCart")) || [
     {
       _id: "625a5c23755f354c3081d0e0",
@@ -86,9 +89,14 @@ export const Cart = () => {
     //chequear si el producto agregado ya existe en la lista
     //IF no existe agregar producto a la lista de local storage ELSE sumar una unidad
   };
-  const sendOrder = async (order)=>{
-    const tiket = await axios.put(`${URL}/orden`, order)
-    console.log(tiket)
+  const sendOrder = async (user,menu)=>{
+    const ticket ={
+      user:user,
+      menu:menu,
+      total:total              }
+    const sendTicket = await axios.post(`${URL}/order`, ticket)
+    console.log('Enviar orden', ticket)
+    //Modal de ticket enviado para descarga en PDF
   }
   useEffect(()=>{
     totalToPay()},[]
@@ -129,7 +137,7 @@ export const Cart = () => {
       </div>
       <div className="order-checkout">
         <div className="total-amount">El monto total a paga es : ${total||"error"}</div>
-        <button onClick={()=>sendOrder(order)}>Confirmar Orden</button>
+        <button onClick={()=>sendOrder(auth.user,order,total)}>Confirmar Orden</button>
       </div>
     </>
   );
