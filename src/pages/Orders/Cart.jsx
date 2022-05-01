@@ -1,5 +1,5 @@
-import { DeleteOutlined } from "@ant-design/icons";
-import { InputNumber, Layout, PageHeader } from "antd";
+import { CheckCircleOutlined, DeleteOutlined } from "@ant-design/icons";
+import { InputNumber, Layout, Modal, PageHeader } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { URL } from "../../constants/endpoints";
@@ -96,7 +96,15 @@ const auth = useAuth()
       total:total              }
     const sendTicket = await axios.post(`${URL}/order`, ticket)
     console.log('Enviar orden', ticket)
-    //Modal de ticket enviado para descarga en PDF
+    Modal.info({
+      title: 'Orden enviada',
+      icon: <CheckCircleOutlined style={{ color: "#52c41a" }} />,
+      content: `Recibimos tu pedido correctamente, su total a abonar es $${total}`,
+      okText: 'Ok',
+      okType: "ghost"
+
+  })
+   
   }
   useEffect(()=>{
     totalToPay()},[]

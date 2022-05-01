@@ -20,7 +20,7 @@ export const Home = ({ user, ...props }) => {
         <Header user={user} />
         <Layout className="fullHeight">
           <Sider className="fullHeight"   breakpoint="lg"
-      collapsedWidth="80px">
+      collapsedWidth="60px">
             <Sidebar user={user} />
           </Sider>
           <Layout>
