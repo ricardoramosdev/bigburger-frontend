@@ -19,7 +19,8 @@ export const Home = ({ user, ...props }) => {
       <Layout style={{ minHeight: "100vh" }}>
         <Header user={user} />
         <Layout className="fullHeight">
-          <Sider className="fullHeight">
+          <Sider className="fullHeight"   breakpoint="lg"
+      collapsedWidth="80px">
             <Sidebar user={user} />
           </Sider>
           <Layout>

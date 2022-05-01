@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   HomeOutlined,
   LogoutOutlined,
@@ -17,6 +17,10 @@ import { Link, Router } from "react-router-dom";
 
 export const Sidebar = () => {
   const cart = JSON.parse(localStorage.getItem('inCart'))
+  
+  const burgerCount =  cart.reduce((counter,itemQty)=>
+    counter + itemQty.cantidad,0)
+  
   const auth = useAuth();
   const userLogout = ()=>{
     auth.logout()
@@ -26,11 +30,12 @@ export const Sidebar = () => {
 
   return (
     <>
+{/*       
       <div className="themeSwitchContainer">
         <Tooltip title="Light mode" placement="right">
           <Switch />
         </Tooltip>
-      </div>
+      </div> */}
       
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
         <Menu.Item key="1" icon={<HomeOutlined />}>
@@ -38,7 +43,7 @@ export const Sidebar = () => {
         </Menu.Item>
         <Menu.Item key="2" icon={<ShoppingCartOutlined />} className="cart">
           <Link to ="/cart">
-        <Badge count={cart?.length} size="small">
+        <Badge count={burgerCount} size="small">
             Cart
           
         </Badge>
@@ -58,7 +63,9 @@ export const Sidebar = () => {
           
         </Menu.Item>
          
-        <Menu.Item key="6" icon={<LogoutOutlined />} onClick={()=>userLogout()}>
+        <Menu.Item key="6" icon={<div className="welcome-container">
+        <div className="welcomeText">{auth.user.fullName[0]}</div>
+      </div>} onClick={()=>userLogout()}>
           Logout
         </Menu.Item>
       </Menu>

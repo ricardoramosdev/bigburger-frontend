@@ -1,3 +1,4 @@
+@import '../../Context/Themes.scss';
 .themeSwitchContainer{
     display: flex;
     justify-content: center;
@@ -13,6 +14,28 @@
     
 
 }
+.welcome-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translateX(-20%);
+}
+.welcomeText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color5);
+    text-align: center;
+    background-color: var(--color3);
+    width: 1.5rem;
+    height: 1.5rem;
+
+    aspect-ratio: 1 !important;
+    border-radius: 50%;
+    
+    
+}
 .d-none{
     display: none !important;
 }
@@ -27,4 +50,7 @@
 }
 .ant-badge-count{
     transform: translate(150%, -45%) !important
+}
+.ant-layout-sider-trigger{
+    background-color: var(--color3) !important;
 }
