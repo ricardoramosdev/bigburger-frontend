@@ -1,4 +1,5 @@
-import { Form, Input, Modal, Typography } from 'antd'
+import { Checkbox, Form, Input, Modal, Table, Typography } from 'antd'
+import Column from 'antd/lib/table/Column'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ListaUsuarios } from './userList/UserList'
@@ -10,8 +11,9 @@ export const User = () => {
     const [dialogTitle, setDialogTitle] = useState('');
 
 
+
     async function loadUsers() {
-        const res = await axios.get(`http://localhost:3000/api/users`);
+        const res = await axios.get(`http://localhost:3100/api/users`);
         const usersDB = res.data.users;
         setUsers(usersDB);
         console.log(usersDB);
@@ -21,7 +23,7 @@ export const User = () => {
         try {
             console.log(id)
             let userDE = users.find(user => user._id === id)
-            const deletedUser = await axios.delete(`http://localhost:3000/api/user/${id}`)
+            const deletedUser = await axios.delete(`http://localhost:3100/api/user/${id}`)
             console.log(deletedUser)
             const u = users.filter(user => user._id !== id);
             setUsers(u)
@@ -38,38 +40,39 @@ export const User = () => {
     }
 
     //EDITAR ROL DE USUARIO
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [userEditing, setUserED] = useState("")
 
-    const [isModalVisible, setUserEdit] = useState(false);
-    const [userEditing, setUserUD] = useState(true)
-
-
-    const handleRoleUser = async (id) => {
-        setUserEdit(true)
+    const handleEditUser = async (user, id) => {
+        setIsModalVisible(true);
         try {
-            const user = users.find(user => user._id === id);
-            const userUd = await axios.put(`http://localhost:3000/api/user/${id}`, user)
-            console.log(userUd.data)
-            setUsers([...users])
+            const userEditing = users.find(user => user._id === id);
+
+            // const userRoleEdit = await axios.put(`http://localhost:3100/api/user/${id}`, user)
+            console.log(userEditing)
         }
         catch (error) {
-            console.log(error)
+
         }
     }
 
     const handleOk = () => {
-        setUserEdit(false);
+        setIsModalVisible(false);
     };
 
     const handleCancel = () => {
-        setUserEdit(false);
+        setIsModalVisible(false);
     };
+
+
+
     //EDITAR USUARIOS
 
     const handleActiveStatus = async (value, property, id) => {
         try {
             const user = users.find(user => user._id === id);
             user[property] = value;
-            const updUser = await axios.put(`http://localhost:3000/api/user/${id}`, user)
+            const updUser = await axios.put(`http://localhost:3100/api/user/${id}`, user)
             console.log(updUser.data)
             setUsers([...users])
             setDialogMessage(updUser.data.msg);
@@ -93,22 +96,20 @@ export const User = () => {
         <>
             <Typography.Title level={1}>Usuarios</Typography.Title>
             {/* <UserList/> */}
-            <ListaUsuarios handleActiveStatus={handleActiveStatus} functionDelete={handleDeleteUser} handleRoleUser={handleRoleUser} users={users} />
+            <ListaUsuarios handleActiveStatus={handleActiveStatus} functionDelete={handleDeleteUser} users={users} functionEditUser={handleEditUser} />
             <Modal title={dialogTitle} visible={actionDialog} onOk={hiddeModal} onCancel={hiddeModal}>
                 {dialogMessage}
             </Modal>
-            <Modal title="Editar ROL de usuario"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}>
-                <Form>
-                    <label for="UserROl">Rol de usuario</label>
-                    <select name="Rol" id="SelectRol" value="ss" onChange={handleRoleUser}>
-                        <option value="ADMIN_ROLE">ADMIN_ROLE</option>
-                        <option value="USER_ROLE">USER_ROLE</option>
-                    </select>
+            <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} handleEditUser={handleEditUser}>
+                <Form
+                >
+                    <Form.Item
+                        label="Rol"
+                        name="role"
+                    >
+                        <Input placeholder={userEditing.role}/>
+                    </Form.Item>
                 </Form>
-
             </Modal>
         </>
 

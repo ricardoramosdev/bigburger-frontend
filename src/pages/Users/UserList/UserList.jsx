@@ -1,10 +1,17 @@
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Checkbox, Button } from 'antd'
+import { DeleteOutlined } from '@ant-design/icons';
+import { Checkbox, Button } from 'antd';
 import { Table, Space } from 'antd';
+
 
 const { Column } = Table
 
-export const ListaUsuarios = ({ functionDelete, handleRoleUser, users, handleActiveStatus }) => {
+
+
+
+export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, functionEditUser}) => {
+
+
+
     // function onChange(pagination, filters, sorter, extra) {
     //   console.log('params', pagination, filters, sorter, extra);
     // }
@@ -18,14 +25,6 @@ export const ListaUsuarios = ({ functionDelete, handleRoleUser, users, handleAct
                     title="Rol"
                     dataIndex="role"
                     key="role"
-                    render={(role, user) => (
-                        <Space size="middle">
-                            <span>{user.role}</span>
-                            {/* BOTON PARA EDITAR  */}
-                            <Button type='secondary' onClick={() => handleRoleUser(user._id)}><EditOutlined /></Button>
-                        </Space>
-
-                    )}
                 />
 
                 <Column
@@ -56,6 +55,17 @@ export const ListaUsuarios = ({ functionDelete, handleRoleUser, users, handleAct
                         </Space>
                     )}
 
+                />
+                <Column
+                    title="Editar usuario"
+                    key="EditarUsuario"
+                    render={(user) => (
+                        <Space size="middle">
+                            <Button type="primary" onClick={() => functionEditUser(user, user._id)}>
+                                EDITAR
+                            </Button>
+                        </Space>
+                    )}
                 />
             </Table>;
 
