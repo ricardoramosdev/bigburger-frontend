@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { Select, Table } from 'antd';
+import { Select, Table, Typography } from 'antd';
 import { Option } from 'antd/lib/mentions';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
@@ -13,9 +13,17 @@ export const OrderList = () => {
     const dataFromDB = await axios.get(`${URL}/orders`)
     console.log(dataFromDB)
     const ordersDB = dataFromDB.data.ticket;
+    const orderToRender= ordersDB.map(el=>({
+      key:el._id,
+      user:el.user.fullName,
+      menu:el.menu,
+      state:el.state,
+      total:el.total
+    }))
+
     
-    updOrders(ordersDB)
-    console.log(orders)
+    updOrders(orderToRender)
+    console.log(orderToRender)
 
 
   }catch{
@@ -28,15 +36,16 @@ export const OrderList = () => {
 
   const columns = [
     {
-      title: 'Usuario',
-      key: 'user',
-      render:(item)=>(item.user._id)
-    },
-    {
       title: 'Pedido',
-      render:(item)=>(item._id),
+      render:(item)=>(item.key),
       key: 'menu',
     },
+    {
+      title: 'Usuario',
+      key: 'user',
+      render:(item)=>(item.user)
+    },
+   
     {
       title: 'Monto ($)',
       dataIndex: 'total',
@@ -46,8 +55,8 @@ export const OrderList = () => {
       title: 'Estado',
       render:(item)=>(
         <Select defaultValue={item.state} style={{ width: 120 }} >
-          <Option value="false">Pendiente</Option>
-          <Option value="true">Realizado</Option>
+          <Select.Option value="false">Pendiente</Select.Option>
+          <Select.Option value="true">Realizado</Select.Option>
         </Select>),
       
       key: 'state'
@@ -56,8 +65,25 @@ export const OrderList = () => {
   
   return (
     <>
-    <h1>Pedidos</h1>
-    <Table dataSource={orders} columns={columns} />;
+    <Typography.Title level={1}>Pedidos</Typography.Title>
+    <Table dataSource={orders} columns={columns} expandable={{
+      expandedRowRender: record => <div style={{ 
+        margin: 0,
+        padding:0 ,
+        display:'flex',
+        justifyContent:'space-between',
+        flexDirection:'column',
+        width:'50%'
+
+       }}>{record.menu.map(el=>(<><div style={{ 
+        margin: 0,
+        display:'flex',
+        justifyContent:'space-between',
+        flexDirection:'row',
+        width:'100%'
+       }}><div>{el.name}</div><div>Cantidad:{el.cantidad }</div></div></>))}</div>,
+      rowExpandable: record => record.name !== 'Not Expandable',
+    }}/>;
    
     </>
   )

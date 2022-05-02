@@ -9,6 +9,7 @@ import { AdminRoute } from "./routers/AdminRoute";
 
 
 import { PrivateRoute } from "./routers/PrivateRoute";
+import { User } from "./pages/Users/user"
 
 
 export const App = () =>{
@@ -21,6 +22,8 @@ export const App = () =>{
           <Route path="/*" element={<PrivateRoute><Home /></PrivateRoute>}/>
           {/* <Route exact path="/*" element={<Home />}/> */}
           
+   
+        
 
         </Routes>
       </AuthProvider>

@@ -1,5 +1,5 @@
 import { CheckCircleOutlined, DeleteOutlined } from "@ant-design/icons";
-import { InputNumber, Layout, Modal, PageHeader } from "antd";
+import { InputNumber, Layout, Modal, PageHeader, Typography } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { URL } from "../../constants/endpoints";
@@ -113,7 +113,7 @@ const auth = useAuth()
   return (
     <>
       <div className="order-header">
-        <h1>Mi Pedido</h1>
+      <Typography.Title level={1}>Mi Pedido</Typography.Title>
       </div>
       <div className="order-body">
         <h2>Estas llevando:</h2>

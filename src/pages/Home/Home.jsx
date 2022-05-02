@@ -9,7 +9,7 @@ import { Sidebar } from "../../shared/Sidebar/Sidebar";
 import { Cart } from "../Orders/Cart";
 import { OrderList } from "../Orders/OrderList/OrderList";
 import { Products } from "../Products/Products";
-import { UserList } from "../Users/UserList/UserList";
+import { User } from "../Users/user";
 import "./Home.scss";
 
 const {  Content, Sider } = Layout;
@@ -36,8 +36,8 @@ export const Home = ({ user, ...props }) => {
                <Route path="/cart" element={<Cart />}/>
                <Route path="/products" element={<AdminRoute><Products /></AdminRoute> }/>
            
-               <Route path="/users" element={<AdminRoute><UserList /></AdminRoute> }/>
                <Route path="/orders" element={<AdminRoute><OrderList /></AdminRoute> }/>
+               <Route path="/users" element={<AdminRoute><User/></AdminRoute>}/>
 
             
             </Routes>
