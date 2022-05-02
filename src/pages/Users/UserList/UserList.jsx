@@ -2,15 +2,11 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { Checkbox, Button } from 'antd';
 import { Table, Space } from 'antd';
 
-
 const { Column } = Table
-
-
-
 
 export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, functionEditUser}) => {
 
-
+    console.log(users)
 
     // function onChange(pagination, filters, sorter, extra) {
     //   console.log('params', pagination, filters, sorter, extra);
@@ -18,7 +14,7 @@ export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, funct
 
     return (
         <>
-            <Table dataSource={users}>
+            <Table dataSource={users} rowKey="_id">
                 <Column title="Nombre y Apellido" dataIndex="fullName" key="fullName" />
                 <Column title="Correo electrónico" dataIndex="email" key="email" />
                 <Column

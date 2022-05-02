@@ -2,7 +2,8 @@ import { Checkbox, Form, Input, Modal, Table, Typography } from 'antd'
 import Column from 'antd/lib/table/Column'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ListaUsuarios } from './userList/UserList'
+import { EditUser } from './EditUser/EditUser'
+import { ListaUsuarios } from './UserList/UserList'
 
 export const User = () => {
     const [users, setUsers] = useState([]);
@@ -13,7 +14,7 @@ export const User = () => {
 
 
     async function loadUsers() {
-        const res = await axios.get(`http://localhost:3100/api/users`);
+        const res = await axios.get(`http://localhost:3400/api/users`);
         const usersDB = res.data.users;
         setUsers(usersDB);
         console.log(usersDB);
@@ -23,7 +24,7 @@ export const User = () => {
         try {
             console.log(id)
             let userDE = users.find(user => user._id === id)
-            const deletedUser = await axios.delete(`http://localhost:3100/api/user/${id}`)
+            const deletedUser = await axios.delete(`http://localhost:3400/api/user/${id}`)
             console.log(deletedUser)
             const u = users.filter(user => user._id !== id);
             setUsers(u)
@@ -42,14 +43,15 @@ export const User = () => {
     //EDITAR ROL DE USUARIO
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [userEditing, setUserED] = useState("")
-
+    const [userToEdit, setUserToEdit] = useState(null)
     const handleEditUser = async (user, id) => {
-        setIsModalVisible(true);
+        console.log(id)
         try {
             const userEditing = users.find(user => user._id === id);
-
-            // const userRoleEdit = await axios.put(`http://localhost:3100/api/user/${id}`, user)
             console.log(userEditing)
+            setUserToEdit(userEditing)
+            setIsModalVisible(true);
+            // const userRoleEdit = await axios.put(`http://localhost:3100/api/user/${id}`, user)
         }
         catch (error) {
 
@@ -62,9 +64,14 @@ export const User = () => {
 
     const handleCancel = () => {
         setIsModalVisible(false);
+        setUserToEdit(null)
     };
 
-
+    const updateRole = async(userUpdated) => {
+        await axios.put(`http://localhost:3400/api/user/${userUpdated._id}`, userUpdated);
+        setIsModalVisible(false)
+        loadUsers();
+    }
 
     //EDITAR USUARIOS
 
@@ -100,16 +107,8 @@ export const User = () => {
             <Modal title={dialogTitle} visible={actionDialog} onOk={hiddeModal} onCancel={hiddeModal}>
                 {dialogMessage}
             </Modal>
-            <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} handleEditUser={handleEditUser}>
-                <Form
-                >
-                    <Form.Item
-                        label="Rol"
-                        name="role"
-                    >
-                        <Input placeholder={userEditing.role}/>
-                    </Form.Item>
-                </Form>
+            <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} handleEditUser={handleEditUser} >
+                <EditUser userToEdit={userToEdit} updateRole={updateRole}></EditUser>
             </Modal>
         </>
 
