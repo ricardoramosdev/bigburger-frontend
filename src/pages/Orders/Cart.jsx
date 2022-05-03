@@ -120,7 +120,7 @@ const auth = useAuth()
         {order.map((item, index) => (
           // <CartItem data={item} index={index} key={item._id}removeFromCart={removeFromCart} total={()=>totalToPay()} />
           <div className='order-card'key={item._id} data={item} index={index} >
-          <img className='order-img'src='' alt='' />
+          <img className='order-img'src={item.IMG} alt='' />
           <div className='order-detail'>
               <h4>{item.name}</h4>
               <div className='order-data'>
@@ -133,8 +133,6 @@ const auth = useAuth()
                       defaultValue={item.cantidad}
                       onChange={(value)=>changeQuantity(item._id,value)}
                       />
-                      
-                      {/* <input qtyid={id} name='qty'type="number"  min='1'  defaultValue={data.cantidad} onChange={()=>changeQuantity(id)} /> */}
                       
                   </div>
                   <button onClick={()=>removeFromCart(item._id)}><DeleteOutlined /></button>

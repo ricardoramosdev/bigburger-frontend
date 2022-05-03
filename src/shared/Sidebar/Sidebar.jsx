@@ -12,12 +12,17 @@ import { Badge, Menu, Switch, Tooltip } from "antd";
 import { useAuth } from "../../auth/useAuth";
 import "./Sidebar.scss";
 import { AdminRoute } from "../../routers/AdminRoute";
-import { Link, Router } from "react-router-dom";
-
+import { Link, NavLink, Router, useLocation } from "react-router-dom";
+import menuItems from './menuItems';
 
 export const Sidebar = () => {
-  const cart = JSON.parse(localStorage.getItem('inCart'))
-  
+  const cart = JSON.parse(localStorage.getItem('inCart')) ||[];
+  const[pathKey, setPathKey]=useState(null)
+  const useCurrentPath =()=>{
+    const {pathname}= useLocation()
+    const {id}=menuItems.find(item=>'url'==pathname)
+    setPathKey(id)
+  }
   const burgerCount =  cart.reduce((counter,itemQty)=>
     counter + itemQty.cantidad,0)
   
@@ -37,29 +42,28 @@ export const Sidebar = () => {
         </Tooltip>
       </div> */}
       
-      <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+      <Menu theme="dark" defaultSelectedKeys={pathKey} mode="inline">
         <Menu.Item key="1" icon={<HomeOutlined />}>
-          <Link to ="/">Home</Link>
+          <NavLink to ="/">Home</NavLink>
         </Menu.Item>
         <Menu.Item key="2" icon={<ShoppingCartOutlined />} className="cart">
-          <Link to ="/cart">
+          <NavLink to ="/cart">
         <Badge count={burgerCount} size="small">
             Cart
-          
         </Badge>
-          </Link>
+          </NavLink>
         </Menu.Item>
 
         <Menu.Item key="3" icon={<SettingOutlined />} hidden={!adminRole} >
-          <Link to ="/orders">Orders Status</Link>
+          <NavLink to ="/orders">Orders Status</NavLink>
           
         </Menu.Item>
         <Menu.Item key="4" icon={<UserSwitchOutlined />}  hidden={!adminRole} >
-          <Link to ="/users">Edit Users</Link>
+          <NavLink to ="/users">Edit Users</NavLink>
           
         </Menu.Item>
         <Menu.Item key="5" icon={<EditOutlined />}  hidden={!adminRole}>
-          <Link to ="/products">Edit Products</Link>
+          <NavLink to ="/products">Edit Products</NavLink>
           
         </Menu.Item>
          

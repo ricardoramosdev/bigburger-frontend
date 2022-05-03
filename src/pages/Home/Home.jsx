@@ -9,6 +9,7 @@ import { Sidebar } from "../../shared/Sidebar/Sidebar";
 import { Cart } from "../Orders/Cart";
 import { OrderList } from "../Orders/OrderList/OrderList";
 import { Products } from "../Products/Products";
+import { ProductHome } from "../Products/ProductsList/ProductHome";
 import { User } from "../Users/user";
 import "./Home.scss";
 
@@ -32,7 +33,7 @@ export const Home = ({ user, ...props }) => {
             minHeight: 280,
           }}>
             <Routes>
-            
+               <Route path="/" element={<ProductHome />}/>
                <Route path="/cart" element={<Cart />}/>
                <Route path="/products" element={<AdminRoute><Products /></AdminRoute> }/>
            

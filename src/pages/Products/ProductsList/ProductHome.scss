@@ -1,0 +1,29 @@
+@import '../../../Context/Themes.scss';
+.card-container{
+    overflow: hidden;
+    box-shadow: 0px 0px 1rem 0.5rem #00000050;
+    border-radius: 0.5rem;
+   
+    .ant-card-body{
+        margin: 0;
+        padding: 0  !important;
+        img{
+            width: 100%;
+        }
+        .card-info{
+            padding: 0.3rem;
+            :first-child{margin-bottom: 0;}
+            :last-child{display: flex;
+            justify-content: flex-end;
+        padding-right: 0.5rem;}
+        }
+    }
+    .card-action{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0.3rem;
+        height: 5rem;
+    }
+}
