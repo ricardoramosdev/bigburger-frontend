@@ -18,6 +18,7 @@ export const ProductHome = () => {
         try {
             const response = await axios.get(`${URL}/products`);
             const productsDB = response.data.products
+           
             productsState(productsDB);
             console.log(productsDB)
         } catch (error) {
@@ -61,8 +62,8 @@ export const ProductHome = () => {
     <div className="site-card-wrapper">
         <Row gutter={10}>
                 {products.map(el=>(
-                    <Col span={8} key={el._id}>
-                <Card className='card-container'bordered={false}>
+                    
+                <Card key={el._id}className='card-container'bordered={false}>
                 <img src={el.IMG} alt={el.name} />
                 <div className="card-info">
                     <h3>{el.name}</h3>
@@ -74,7 +75,7 @@ export const ProductHome = () => {
                    
                     <button onClick={()=>addToCart(el._id)}>Agregar</button></div>
                 </Card>
-            </Col>))
+                ))
             }
         </Row>
     </div>

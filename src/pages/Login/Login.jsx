@@ -73,21 +73,22 @@ export const Login = () => {
         <Form.Item
           label="Email"
           name={"email"}
-          initialValue="admin@admin.com"
+          initialValue="ricardoadm@gmail.com"
           rules={[
             {
               required: validationOn,
               message: "Introduzca un email!",
             },
           ]}
+          
         >
-          <Input />
+          <Input maxLength={30}/>
         </Form.Item>
 
         <Form.Item
           label="Password"
           name={"password"}
-          initialValue="alfabeta"
+          initialValue="administrador"
           rules={[
             {
               required: validationOn,
@@ -95,7 +96,7 @@ export const Login = () => {
             },
           ]}
         >
-          <Input.Password />
+          <Input.Password maxLength={30}/>
         </Form.Item>
         <Form.Item
           name="register"
@@ -103,6 +104,7 @@ export const Login = () => {
             offset: 8,
             span: 16,
           }}
+          
         >
           <a onClick={showModal}>Register</a>
           
@@ -141,14 +143,14 @@ export const Login = () => {
             name={"fullName"}
             rules={[{ required: validationOn, message: "Ingrese un nombre válido!" }]}
           >
-            <Input />
+            <Input maxLength={30}/>
           </Form.Item>
           <Form.Item
             label="Email"
             name={"email"}
             rules={[{ required: validationOn, message: "Ingrese un email válido!" }]}
           >
-            <Input />
+            <Input maxLength={30}/>
           </Form.Item>
 
           <Form.Item
@@ -156,7 +158,7 @@ export const Login = () => {
             name={"password"}
             rules={[{ required: validationOn, message: "Ingrese una contraseña!" }]}
           >
-            <Input.Password />
+            <Input.Password maxLength={30}/>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

@@ -1,21 +1,27 @@
 @import '../../../Context/Themes.scss';
 .card-container{
     overflow: hidden;
-    box-shadow: 0px 0px 1rem 0.5rem #00000050;
+    box-shadow: 0px 0px 1rem 0.2rem #00000050;
     border-radius: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+
    
     .ant-card-body{
         margin: 0;
-        padding: 0  !important;
-        img{
-            width: 100%;
-        }
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
         .card-info{
             padding: 0.3rem;
             :first-child{margin-bottom: 0;}
             :last-child{display: flex;
             justify-content: flex-end;
-        padding-right: 0.5rem;}
+            padding-right: 0.5rem;}
+            flex-grow: 1;
         }
     }
     .card-action{
@@ -24,6 +30,6 @@
         justify-content: space-around;
         align-items: center;
         padding: 0.3rem;
-        height: 5rem;
+        margin-top: 0.3rem;
     }
 }

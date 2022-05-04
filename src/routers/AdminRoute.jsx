@@ -7,7 +7,7 @@ export const AdminRoute = ({children}) => {
 
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
     const userRole = currentUser.role
-   return userRole == 'ADMIN_ROLE'? children : <Navigate to="/home" replace/>;
+   return userRole == 'ADMINISTRADOR'? children : <Navigate to="/home" replace/>;
     
   
 }

@@ -23,8 +23,8 @@ export const Sidebar = () => {
     const {id}=menuItems.find(item=>'url'==pathname)
     setPathKey(id)
   }
-  const burgerCount =  cart.reduce((counter,itemQty)=>
-    counter + itemQty.cantidad,0)
+  const bCount = ()=>{const burgerCount = cart.reduce((counter,itemQty)=>  counter + itemQty.cantidad,0)
+  return burgerCount}
   
   const auth = useAuth();
   const userLogout = ()=>{
@@ -32,6 +32,10 @@ export const Sidebar = () => {
   }
   const userRole = JSON.parse(localStorage.getItem('currentUser')).role
   const adminRole = userRole == 'ADMIN_ROLE'? true : false;
+
+useEffect(()=>{
+  bCount()
+}, [])
 
   return (
     <>
@@ -48,7 +52,7 @@ export const Sidebar = () => {
         </Menu.Item>
         <Menu.Item key="2" icon={<ShoppingCartOutlined />} className="cart">
           <NavLink to ="/cart">
-        <Badge count={burgerCount} size="small">
+        <Badge count={bCount()} size="small">
             Cart
         </Badge>
           </NavLink>

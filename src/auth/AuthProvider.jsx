@@ -28,6 +28,7 @@ export const AuthProvider = ({children}) => {
         console.log('logout')
         localStorage.removeItem('userToken');
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('inCart');
         setUser(null);
         navigate('/login')
     }
