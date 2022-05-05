@@ -67,7 +67,8 @@ const auth = useAuth()
    
   }
   useEffect(()=>{
-    totalToPay()},[]
+    totalToPay()},[order]
+    
   )
 
   return (
@@ -102,7 +103,7 @@ const auth = useAuth()
         ))}
       </div>
       <div className="order-checkout">
-        <div className="total-amount">El monto total a paga es : ${total||"error"}</div>
+        <div className="total-amount">El monto total a paga es : ${total||0}</div>
         <button onClick={()=>sendOrder(auth.user,order,total)}>Confirmar Orden</button>
       </div>
     </>
