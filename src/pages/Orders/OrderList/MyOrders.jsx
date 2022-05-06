@@ -14,8 +14,10 @@ export const MyOrders = () => {
     try{
     const dataFromDB = await axios.get(`${URL}/orders`)
     const ordersDB = dataFromDB.data.ticket;
+    console.log(dataFromDB)
     const orderFilter= ordersDB.filter(el=>el.user._id==auth.user._id)
     const orderToRender= orderFilter.map(el=>({
+      date:el.cretatedAt,
       key:el._id,
       user:el.user.fullName,
       menu:el.menu,
@@ -35,9 +37,10 @@ export const MyOrders = () => {
 
   const columns = [
     {
-      title: 'Pedido',
-      render:(item)=>(item.key),
-      key: 'menu',
+      title: 'Fecha',
+      render:(item)=>(item.date.slice(0,10)),
+      key: 'fecha',
+      maxLength:10
     },
     {
       title: 'Usuario',
@@ -52,11 +55,7 @@ export const MyOrders = () => {
     },
     {
       title: 'Estado',
-      render:(item)=>(
-        <Select defaultValue={item.state} style={{ width: 120 }} >
-          <Select.Option value="pendiente">Pendiente</Select.Option>
-          <Select.Option value="realizado">Realizado</Select.Option>
-        </Select>),
+      render:(item)=>(item.state),
       
       key: 'state'
     },
