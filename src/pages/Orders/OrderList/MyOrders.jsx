@@ -3,17 +3,19 @@ import { Select, Table, Typography } from 'antd';
 import { Option } from 'antd/lib/mentions';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useAuth } from '../../../auth/useAuth';
 import { URL } from '../../../constants/endpoints';
 import './OrderList.scss'
-export const OrderList = () => {
+export const MyOrders = () => {
+  const auth= useAuth()
   const[orders, updOrders] = useState()
   //Traer ordenes de la base de datos
   const getOrders = async ()=>{
     try{
     const dataFromDB = await axios.get(`${URL}/orders`)
-    console.log(dataFromDB)
     const ordersDB = dataFromDB.data.ticket;
-    const orderToRender= ordersDB.map(el=>({
+    const orderFilter= ordersDB.filter(el=>el.user._id==auth.user._id)
+    const orderToRender= orderFilter.map(el=>({
       key:el._id,
       user:el.user.fullName,
       menu:el.menu,
@@ -21,11 +23,7 @@ export const OrderList = () => {
       total:el.total
     }
     ))
-
-    
     updOrders(orderToRender)
-    console.log(orderToRender)
-
 
   }catch{
     console.log('No se pudo obtener ')
@@ -66,7 +64,7 @@ export const OrderList = () => {
   
   return (
     <>
-    <Typography.Title level={1}>Pedidos</Typography.Title>
+    <Typography.Title level={1}>Mis Pedidos</Typography.Title>
     <Table className='tabla'dataSource={orders} columns={columns} expandable={{
       expandedRowRender: record => <div style={{ 
         margin: 0,

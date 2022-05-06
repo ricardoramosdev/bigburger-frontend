@@ -6,6 +6,7 @@ import {
   EditOutlined,
   SettingOutlined,
   UserSwitchOutlined,
+  ShoppingOutlined,
 } from "@ant-design/icons";
 
 import { Badge, Menu, Switch, Tooltip } from "antd";
@@ -31,7 +32,7 @@ export const Sidebar = () => {
     auth.logout()
   }
   const userRole = JSON.parse(localStorage.getItem('currentUser')).role
-  const adminRole = userRole == 'ADMIN_ROLE'? true : false;
+  const adminRole = userRole == 'ADMINISTRADOR'? true : false;
 
 useEffect(()=>{
   bCount()
@@ -58,6 +59,10 @@ useEffect(()=>{
           </NavLink>
         </Menu.Item>
 
+        <Menu.Item key="7" icon={<ShoppingOutlined />}  >
+          <NavLink to ="/myorder">My Orders</NavLink>
+          
+        </Menu.Item>
         <Menu.Item key="3" icon={<SettingOutlined />} hidden={!adminRole} >
           <NavLink to ="/orders">Orders Status</NavLink>
           

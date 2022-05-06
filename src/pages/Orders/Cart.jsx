@@ -64,7 +64,7 @@ const auth = useAuth()
       okType: "ghost"
 
   })
-   
+   setOrder([])
   }
   useEffect(()=>{
     totalToPay()},[order]
