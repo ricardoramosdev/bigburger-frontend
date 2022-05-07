@@ -4,9 +4,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { URL } from "../../constants/endpoints";
 import "./Cart.scss";
-import { CartItem } from "./CartItem";
 import { useAuth } from "../../auth/useAuth";
-export const Cart = () => {
+export const Cart = ({bCount}) => {
 const auth = useAuth()
 
   const initialCart = JSON.parse(localStorage.getItem("inCart")) || [];
@@ -19,21 +18,18 @@ const auth = useAuth()
     const updateOrder = order.filter((item) => item._id !== id);
     setOrder(updateOrder);
     totalToPay()
-
+    bCount(order)
   };
   
-  //   Cambiar cantidad
+  //   Cambiar cantidad en input number
     const changeQuantity = (id,value)=>{
-    console.log(value , id)
       const index=order.findIndex(item => item._id===id)
       const item= order[index]
       let item1={...item, cantidad:value}
-      console.log(item1)
       order.splice(index,1,item1)
       setOrder(order)
       totalToPay()
-
-
+      bCount(order)
    }
 
   const[ total, updTotal]=useState(0)
@@ -66,8 +62,13 @@ const auth = useAuth()
   })
    setOrder([])
   }
+  
   useEffect(()=>{
-    totalToPay()},[order]
+    totalToPay()
+    bCount(order)
+
+   }
+  ,[order]
     
   )
 
@@ -103,7 +104,9 @@ const auth = useAuth()
         ))}
       </div>
       <div className="order-checkout">
-        <div className="total-amount">El monto total a paga es : ${total||0}</div>
+      
+        <div className="total-amount">
+        <Typography.Title level={3}>Total: ${total||0}</Typography.Title></div>
         <button onClick={()=>sendOrder(auth.user,order,total)}>Confirmar Orden</button>
       </div>
     </>

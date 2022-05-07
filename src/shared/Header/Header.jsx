@@ -4,28 +4,15 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/img/logo-transparente.png";
 import "./Header.scss";
-export const Header = () => {
-  const cart = JSON.parse(localStorage.getItem("inCart")) || [];
-
-  const bCount = () => {
-    const burgerCount = cart.reduce(
-      (counter, itemQty) => counter + itemQty.cantidad,
-      0
-    );
-    return burgerCount;
-  };
-
-  useEffect(() => {
-    bCount();
-  }, []);
-  return (
+export const Header = ({productsQty}) => {
+   return (
     <>
       <div className="navbar">
         <div>
           <img src={logo} className="logo"></img>
         </div>
         <NavLink className="nav-cart" to="/cart">
-          <Badge count={bCount()} size="small">
+          <Badge count={productsQty} className='badge'size="small">
             <ShoppingCartOutlined />
           </Badge>
         </NavLink>

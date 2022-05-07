@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { Select, Table, Typography } from 'antd';
 import { Option } from 'antd/lib/mentions';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 import React, { useEffect, useState } from 'react'
 import { URL } from '../../../constants/endpoints';
 import './OrderList.scss'
@@ -11,7 +11,6 @@ export const OrderList = () => {
   const getOrders = async ()=>{
     try{
     const dataFromDB = await axios.get(`${URL}/orders`)
-    console.log(dataFromDB)
     const ordersDB = dataFromDB.data.ticket;
     const orderToRender= ordersDB.map(el=>({
       key:el._id,
@@ -21,15 +20,17 @@ export const OrderList = () => {
       total:el.total
     }
     ))
-
-    
     updOrders(orderToRender)
-    console.log(orderToRender)
-
-
   }catch{
     console.log('No se pudo obtener ')
   }
+}
+
+const handleOrderStatus= async (id,e)=>{
+  //obtener el pedido q se va  a modifica
+  //cambiar la propiedad state
+  //enviar a base de datos con put
+ const orderUd = await axios.put(`${URL}/order/${id}`,{state:e})
 }
   useEffect(() => {
     getOrders()
@@ -55,7 +56,7 @@ export const OrderList = () => {
     {
       title: 'Estado',
       render:(item)=>(
-        <Select defaultValue={item.state} style={{ width: 120 }} >
+        <Select defaultValue={item.state} style={{ width: 120 }} onChange={(e)=>handleOrderStatus(item.key,e)}>
           <Select.Option value="pendiente">Pendiente</Select.Option>
           <Select.Option value="realizado">Realizado</Select.Option>
         </Select>),

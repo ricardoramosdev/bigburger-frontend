@@ -14,7 +14,6 @@ export const MyOrders = () => {
     try{
     const dataFromDB = await axios.get(`${URL}/orders`)
     const ordersDB = dataFromDB.data.ticket;
-    console.log(dataFromDB)
     const orderFilter= ordersDB.filter(el=>el.user._id==auth.user._id)
     const orderToRender= orderFilter.map(el=>({
       date:el.cretatedAt,
