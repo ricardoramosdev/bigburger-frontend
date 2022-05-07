@@ -16,7 +16,7 @@ import "./Home.scss";
 
 const { Content, Sider } = Layout;
 export const Home = () => {
-
+  const initialCart = JSON.parse(localStorage.getItem('inCart'))
   const [productsQty, setProductQty] = useState(0);
   const bCount = (cart) => {
    
@@ -26,7 +26,9 @@ export const Home = () => {
     );
     setProductQty(burgerCount);
   };
- 
+  useEffect(()=>{
+    bCount(initialCart)},[]
+  )
   return (
     <>
       <Layout style={{ minHeight: "100vh" }}>

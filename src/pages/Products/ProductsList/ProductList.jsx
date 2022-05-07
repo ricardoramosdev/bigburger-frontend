@@ -6,7 +6,7 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 
 export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
 
-    const columns = [
+    const columns = [ 
         {
             title: "ID",
             dataIndex: "_id",
@@ -68,7 +68,7 @@ export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
     return (
         <>
             <br />
-            <br />
+           
             <Table columns={columns} dataSource={productsDBToList} className={"tabla"}/>
         </>
     )
