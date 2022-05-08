@@ -7,13 +7,23 @@
     align-items: center;
     z-index: 1050;
     padding: 0;
-    
+
+    display: flex;
         div{
-            display: flex;
+        display: flex;
         justify-content: center;
         align-items: center;
-            height: 100%;
+        height: 100%;
             
         }
-    
+    .nav-cart{
+        position: absolute;
+        right: 2rem;
+        transform: scale(1.5);
+        .ant-badge-count{
+            transform:scale(0.6) translate(50%,-50%)!important;
+
+        }
+    }
+
 }

@@ -29,7 +29,9 @@ export const ProductsAdd = ({ addProduct }) => {
     }
 
     return (
+
         <Row>
+
             <Col xs={18} lg={12} offset={6}  className='addProduct'>
             <h1>Crear producto</h1>
                 <Form

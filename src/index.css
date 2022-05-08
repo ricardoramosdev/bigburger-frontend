@@ -36,4 +36,6 @@ button{
   color: white;
   /* box-shadow: 0 0.3rem 0.5rem ; */
 }
+
 button:hover{transform: scale(1.1);}
+
