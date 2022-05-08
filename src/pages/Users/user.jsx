@@ -3,7 +3,7 @@ import Column from 'antd/lib/table/Column'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { EditUser } from './EditUser/EditUser'
-import { ListaUsuarios } from './UserList/UserList'
+import { ListaUsuarios } from './userList/UserList'
 
 export const User = () => {
     const [users, setUsers] = useState([]);
@@ -14,7 +14,7 @@ export const User = () => {
 
 
     async function loadUsers() {
-        const res = await axios.get(`http://localhost:3400/api/users`);
+        const res = await axios.get(`http://localhost:3100/api/users`);
         const usersDB = res.data.users;
         setUsers(usersDB);
         console.log(usersDB);
@@ -24,12 +24,13 @@ export const User = () => {
         try {
             console.log(id)
             let userDE = users.find(user => user._id === id)
-            const deletedUser = await axios.delete(`http://localhost:3400/api/user/${id}`)
+            const deletedUser = await axios.delete(`http://localhost:3100/api/user/${id}`)
             console.log(deletedUser)
             const u = users.filter(user => user._id !== id);
             setUsers(u)
+            console.log(u)
             setDialogMessage(deletedUser.data.msg);
-            setDialogTitle(`USUARIO ${userDE.fullName} ELIMINADO`)
+            setDialogTitle(`USUARIO: "${userDE.fullName}" ELIMINADO`)
             toggleActionDialog(true)
         }
         catch (error) {
@@ -42,7 +43,6 @@ export const User = () => {
 
     //EDITAR ROL DE USUARIO
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [userEditing, setUserED] = useState("")
     const [userToEdit, setUserToEdit] = useState(null)
     const handleEditUser = async (user, id) => {
         console.log(id)
@@ -51,10 +51,9 @@ export const User = () => {
             console.log(userEditing)
             setUserToEdit(userEditing)
             setIsModalVisible(true);
-            // const userRoleEdit = await axios.put(`http://localhost:3100/api/user/${id}`, user)
         }
         catch (error) {
-
+            console.log(error)
         }
     }
 
@@ -67,9 +66,9 @@ export const User = () => {
         setUserToEdit(null)
     };
 
-    const updateRole = async(userUpdated) => {
-        await axios.put(`http://localhost:3400/api/user/${userUpdated._id}`, userUpdated);
-        setIsModalVisible(false)
+    const updateRole = async (userUpdated) => {
+        await axios.put(`http://localhost:3100/api/user/${userUpdated._id}`, userUpdated);
+        // setIsModalVisible(false)
         loadUsers();
     }
 
@@ -83,8 +82,15 @@ export const User = () => {
             console.log(updUser.data)
             setUsers([...users])
             setDialogMessage(updUser.data.msg);
-            setDialogTitle(`USUARIO ${user.fullName} MODIFICADO CORRECTAMENTE`)
-            toggleActionDialog(true)
+            if(user.active){
+                setDialogTitle(`USUARIO: "${user.fullName}" ACTIVADO`)
+                toggleActionDialog(true)
+            } else { 
+                setDialogTitle(`USUARIO: "${user.fullName}" DESACTIVADO`)
+                setDialogMessage()
+                toggleActionDialog(true)
+            }
+            
         } catch (error) {
             console.log(error)
             setDialogMessage(`Error al modificar el usuario`);
@@ -107,7 +113,7 @@ export const User = () => {
             <Modal title={dialogTitle} visible={actionDialog} onOk={hiddeModal} onCancel={hiddeModal}>
                 {dialogMessage}
             </Modal>
-            <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} handleEditUser={handleEditUser} >
+            <Modal title="Editar usuario" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} handleEditUser={handleEditUser} >
                 <EditUser userToEdit={userToEdit} updateRole={updateRole}></EditUser>
             </Modal>
         </>

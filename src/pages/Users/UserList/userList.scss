@@ -1,0 +1,61 @@
+.Columns {
+    margin: 15px;
+    border: 1px solid #e7e7e7;
+    display: block;
+
+    .Active {
+        text-align: center;
+        width: 10px;
+        .checkbox{
+            justify-content: center;
+        }
+    }
+    .fullName {
+        width: 400px;
+        text-align: start;
+    }
+    .Email{
+        width: 400px;
+
+    }
+    .Role{
+        width: 200px;
+        .spanRole{
+            font-style: oblique;
+        }
+    }
+    .Actions{
+        width: 100px;
+        padding: 0px;
+        text-align: center;
+        .BtnD{
+            text-align: center;
+        }
+    }
+}
+.ant-pagination {
+    justify-content: center !important;
+}
+
+@media screen and (max-width: 700px) {
+    .Columns{
+        align-items: center;
+        margin: 0px;
+        width: 100%;
+        .Active{
+            width: 50px;
+        }
+        .fullName{
+            display: none;
+        }
+        .Email{
+            width: 150px;
+        }
+        .Role{
+            width: 100px;
+        }
+        .Actions{
+            width: 50px;
+        }
+    }
+}
