@@ -6,7 +6,9 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 
 export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
 
+
     const columns = [
+
         {
             title: "ID",
             dataIndex: "_id",
@@ -44,7 +46,9 @@ export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
             title: "Imágen",
             key: "price",
             render: (fila) => (
-                <Image src={fila.IMG ? fila.IMG : null} width={150} height={100}/>
+
+                
+                <Image src={fila.IMG ? fila.IMG : null} />
             ) 
         },
         {
@@ -67,7 +71,10 @@ export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
     return (
         <>
             <br />
-            <br />
+
+       
+
+
             <Table columns={columns} dataSource={productsDBToList} className={"tabla"}/>
         </>
     )

@@ -1,0 +1,37 @@
+@import '../../Context/Themes.scss';
+
+.order_header{
+    justify-content: center;
+}
+.order-body{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color5);
+    border-radius: 0.3rem;
+    .order-card{
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: row;
+        // border: 1px solid black;
+        border-radius: 1rem;
+        box-shadow: 0px 0.5rem 1rem rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        background-color: white;
+        img{
+            height: 100px;
+            width: 100px;
+            background-color: black;
+        }
+        .order-detail{
+            padding: 0.3rem;
+            width: 100%;
+            .order-data{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }  
+        }
+
+    }
+}

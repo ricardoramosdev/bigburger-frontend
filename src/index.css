@@ -1,3 +1,5 @@
+@import './Context/Themes.scss';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
@@ -12,6 +15,34 @@ code {
     monospace;
 }
 
+
 .p10 {
   padding: 3rem;
 }
+
+.navbar{
+  background-color: var(--color1);
+}
+.noti-bubble{
+  position: absolute;
+  top:0.5rem;
+  right:50%; padding:1px 2px 1px 2px; 
+  background-color:red;
+  height: 0.7rem;
+  width: 0.7rem; 
+  border-radius: 50%;
+  color:white;
+
+}
+button{
+  border: none;
+  background-color: var(--color3);
+  border-radius: 0.3rem;
+  cursor: pointer;
+  color: white;
+  /* box-shadow: 0 0.3rem 0.5rem ; */
+}
+
+button:hover{transform: scale(1.1);}
+
+

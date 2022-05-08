@@ -30,7 +30,9 @@ export const Products = () => {
             okType: "ghost"
 
         })
+
         loadProductsNoModal()
+
     }
 
 
@@ -87,9 +89,11 @@ export const Products = () => {
 
 
 
+
     useEffect(() => {
         loadProducts()
     }, []);
+
 
 
 
@@ -102,6 +106,7 @@ export const Products = () => {
             productsState(productsDB);
             totalProductsUpdate(total);
 
+
             Modal.info({
                 title: 'Productos obtenidos',
                 icon: <ExclamationCircleOutlined />,
@@ -109,6 +114,7 @@ export const Products = () => {
                 okText: 'Ok',
 
             })
+
 
         } catch (error) {
             Modal.error({
@@ -168,6 +174,7 @@ export const Products = () => {
 
 
 
+
     return (
         <>
             {/* INFORMACION PRINCIPAL */}
@@ -188,7 +195,9 @@ export const Products = () => {
                 }}
                 onOk={() => {
                     productsState((pre) => {
+
                         pre.map((product) => {
+
                             if (product._id === productEditing._id) {
                                 return productEditing
                             }
@@ -248,7 +257,9 @@ export const Products = () => {
                     <Form.Item label="Precio">
                         <input className='inputEdit' type={"number"} value={productEditing?.price} onChange={(e) => {
                             setProductEditing((pre) => {
-                                console.log(pre.price)
+
+
+
                                 return { ...pre, price: e.target.value }
                             })
                         }} />
@@ -280,7 +291,7 @@ export const Products = () => {
                     <Form.Item label="Stock">
                         <Checkbox checked={productEditing?.stock} onChange={(e) => {
                             setProductEditing((pre) => {
-                                console.log(productEditing)
+
                                 return { ...pre, stock: e.target.checked }
                             })
                         }} />

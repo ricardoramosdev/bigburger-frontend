@@ -1,0 +1,35 @@
+@import '../../Context/Themes.scss';
+.logoContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+.formContainer{
+    // padding-top: 4rem;
+    // display: flex;
+    z-index: 1090;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-image: linear-gradient(
+    var(--color2) 20%, var(--color3) 40%, var(--color4) 60%, var(--color5) 100%);
+    display: flex;
+    .formBlock{
+        background-color: rgba($color: white, $alpha: 0.6);
+        padding: 2rem;
+        width:75% ;
+        justify-content: center;
+        border-radius: 0.4rem;
+        z-index: 900;
+        a{
+            color: black;
+            font-weight: bolder;
+        }
+    }
+
+}

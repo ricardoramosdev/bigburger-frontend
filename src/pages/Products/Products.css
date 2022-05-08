@@ -51,6 +51,7 @@
 
 .tabla {
     overflow-x: auto
+
 }
 
 @media screen and (max-width: 991px) {
@@ -61,4 +62,5 @@
         padding: 1rem;
     }
     
+
 }

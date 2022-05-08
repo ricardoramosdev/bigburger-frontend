@@ -1,0 +1,20 @@
+@import '../../Context/Themes.scss';
+
+.logo{
+    height: 3rem;
+}
+.ant-layout-header {
+    padding: 0px !important;
+}
+.ant-menu.ant-menu-dark, .ant-layout-sider{
+  background-color:#211d1d!important;
+}
+.ant-menu-item-selected, .ant-menu-item:hover {
+  background-color: var(--color4) !important ;
+}
+.ant-switch-checked{
+  background-color: var(--color3) !important;
+}
+.fullHeight{
+  min-height: 100vh;
+}
