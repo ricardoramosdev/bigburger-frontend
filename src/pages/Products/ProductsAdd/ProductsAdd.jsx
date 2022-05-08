@@ -29,7 +29,7 @@ export const ProductsAdd = ({ addProduct }) => {
     return (
         <Row>
             <Col xs={18} lg={12} offset={6}  className='addProduct' >
-            <h1>Crear producto</h1>
+            <h1>Añadir producto</h1>
                 <Form
                     layout='vertical'
                     name="product"
@@ -61,7 +61,7 @@ export const ProductsAdd = ({ addProduct }) => {
 
                         <Col xs={12} lg={12}>
                             {/* PRECIO */}
-                            <Form.Item label="Precio" name={"price"} rules={[{ type: 'number', min: 0, max: 10000, required: true }]}>
+                            <Form.Item label="Precio" name={"price"} rules={[{ type: 'number', min: 1, max: 10000, required: true }]}>
                                 <InputNumber placeholder="Ingrese el precio del producto" addonBefore="$" />
                             </Form.Item>
                         </Col>

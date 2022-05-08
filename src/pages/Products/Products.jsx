@@ -30,6 +30,7 @@ export const Products = () => {
             okType: "ghost"
 
         })
+        loadProductsNoModal()
     }
 
 
@@ -101,13 +102,13 @@ export const Products = () => {
             productsState(productsDB);
             totalProductsUpdate(total);
 
-            // Modal.info({
-            //     title: 'Productos obtenidos',
-            //     icon: <ExclamationCircleOutlined />,
-            //     content: `Se obtuvieron un total de ${total} productos`,
-            //     okText: 'Ok',
+            Modal.info({
+                title: 'Productos obtenidos',
+                icon: <ExclamationCircleOutlined />,
+                content: `Se obtuvieron un total de ${total} productos`,
+                okText: 'Ok',
 
-            // })
+            })
 
         } catch (error) {
             Modal.error({
@@ -187,7 +188,7 @@ export const Products = () => {
                 }}
                 onOk={() => {
                     productsState((pre) => {
-                        return pre.map((product) => {
+                        pre.map((product) => {
                             if (product._id === productEditing._id) {
                                 return productEditing
                             }
