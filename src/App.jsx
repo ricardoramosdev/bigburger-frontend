@@ -1,4 +1,5 @@
 
+
 import { Route, Routes } from "react-router-dom"
 import { AuthProvider } from "./auth/AuthProvider";
 import { Home } from "./pages/Home/Home"
@@ -12,10 +13,12 @@ import { PrivateRoute } from "./routers/PrivateRoute";
 import { User } from "./pages/Users/user"
 
 
+
 export const App = () =>{
 
   return(
     <>
+
     <AuthProvider>
         <Routes>
           <Route exact path="/login" element={<Login/>}/>
@@ -27,6 +30,7 @@ export const App = () =>{
 
         </Routes>
       </AuthProvider>
+
     </>
   )
 }

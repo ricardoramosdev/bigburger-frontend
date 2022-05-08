@@ -30,6 +30,9 @@ export const Products = () => {
             okType: "ghost"
 
         })
+
+        loadProductsNoModal()
+
     }
 
 
@@ -103,13 +106,15 @@ export const Products = () => {
             productsState(productsDB);
             totalProductsUpdate(total);
 
-            // Modal.info({
-            //     title: 'Productos obtenidos',
-            //     icon: <ExclamationCircleOutlined />,
-            //     content: `Se obtuvieron un total de ${total} productos`,
-            //     okText: 'Ok',
 
-            // })
+            Modal.info({
+                title: 'Productos obtenidos',
+                icon: <ExclamationCircleOutlined />,
+                content: `Se obtuvieron un total de ${total} productos`,
+                okText: 'Ok',
+
+            })
+
 
         } catch (error) {
             Modal.error({
@@ -191,7 +196,7 @@ export const Products = () => {
                 onOk={() => {
                     productsState((pre) => {
 
-                         pre.map((product) => {
+                        pre.map((product) => {
 
                             if (product._id === productEditing._id) {
                                 return productEditing
@@ -252,6 +257,8 @@ export const Products = () => {
                     <Form.Item label="Precio">
                         <input className='inputEdit' type={"number"} value={productEditing?.price} onChange={(e) => {
                             setProductEditing((pre) => {
+
+
 
                                 return { ...pre, price: e.target.value }
                             })

@@ -3,14 +3,16 @@ import { Form, Input, Button, Select, InputNumber, Switch, Row, Col, Modal, } fr
 import axios from 'axios';
 import TextArea from 'antd/lib/input/TextArea';
 import { CloseOutlined } from '@ant-design/icons';
+
 import { URL } from '../../../constants/endpoints'
 const { Option } = Select;
 
 
 
+
 export const ProductsAdd = ({ addProduct }) => {
     const addNewProduct = async (formData) => {
-        console.log(formData)
+
         try {
             const { data } = await axios.post(`${URL}/product`, formData );
             console.log('dataOne', data.nuevoProducto)
@@ -31,9 +33,9 @@ export const ProductsAdd = ({ addProduct }) => {
     return (
 
         <Row>
+            <Col xs={18} lg={12} offset={6}  className='addProduct' >
+            <h1>Añadir producto</h1>
 
-            <Col xs={18} lg={12} offset={6}  className='addProduct'>
-            <h1>Crear producto</h1>
                 <Form
                     layout='vertical'
                     name="product"
@@ -65,7 +67,9 @@ export const ProductsAdd = ({ addProduct }) => {
 
                         <Col xs={12} lg={12}>
                             {/* PRECIO */}
-                            <Form.Item label="Precio" name={"price"} rules={[{ type: 'number', min: 0, max: 10000, required: true }]}>
+
+                            <Form.Item label="Precio" name={"price"} rules={[{ type: 'number', min: 1, max: 10000, required: true }]}>
+
                                 <InputNumber placeholder="Ingrese el precio del producto" addonBefore="$" />
                             </Form.Item>
                         </Col>

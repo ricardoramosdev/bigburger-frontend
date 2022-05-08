@@ -14,6 +14,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.p10 {
+  padding: 3rem;
+}
+
 .navbar{
   background-color: var(--color1);
 }
@@ -38,4 +44,5 @@ button{
 }
 
 button:hover{transform: scale(1.1);}
+
 

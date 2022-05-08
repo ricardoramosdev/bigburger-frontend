@@ -51,4 +51,16 @@
 
 .tabla {
     overflow-x: auto
+
+}
+
+@media screen and (max-width: 991px) {
+    .addProduct{
+        margin: auto;
+    }
+    .p10 {
+        padding: 1rem;
+    }
+    
+
 }
