@@ -8,7 +8,7 @@ export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, funct
 
     return (
         <>
-            <Table className='Columns' dataSource={users} rowKey="_id"  className='tabla>
+            <Table className='Columns tabla' dataSource={users} rowKey="_id">
                 <Column className="Active"
                     title="Active"
                     key="action"

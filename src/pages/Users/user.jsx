@@ -15,6 +15,7 @@ export const User = () => {
 
     async function loadUsers() {
         const res = await axios.get(`${URL}/users`);
+        console.log(res)
         const usersDB = res.data.users;
         setUsers(usersDB);
         console.log(usersDB);
@@ -69,7 +70,7 @@ export const User = () => {
     };
 
     const updateRole = async (userUpdated) => {
-        await axios.put(`http://localhost:3100/api/user/${userUpdated._id}`, userUpdated);
+        await axios.put(`${URL}/user/${userUpdated._id}`, userUpdated);
         // setIsModalVisible(false)
         loadUsers();
     }
