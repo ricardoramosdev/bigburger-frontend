@@ -1,45 +1,23 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Checkbox, Button } from 'antd'
+import { Checkbox, Button, Row, Pagination } from 'antd';
 import { Table, Space } from 'antd';
-
+import './userList.scss'
 import '../../Orders/OrderList/OrderList.scss'
-
 const { Column } = Table
-
-export const ListaUsuarios = ({ functionDelete, handleRoleUser, users, handleActiveStatus }) => {
-    // function onChange(pagination, filters, sorter, extra) {
-    //   console.log('params', pagination, filters, sorter, extra);
-    // }
+export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, functionEditUser}) => {
 
     return (
         <>
-
-            <Table dataSource={users} className='tabla'>
-
-                <Column title="Nombre y Apellido" dataIndex="fullName" key="fullName" />
-                <Column title="Correo electrónico" dataIndex="email" key="email" />
-                <Column
-                    title="Rol"
-                    dataIndex="role"
-                    key="role"
-                    render={(role, user) => (
-                        <Space size="middle">
-                            <span>{user.role}</span>
-                            {/* BOTON PARA EDITAR  */}
-                            <Button type='secondary' onClick={() => handleRoleUser(user._id)}><EditOutlined /></Button>
-                        </Space>
-
-                    )}
-                />
-
-                <Column
+            <Table className='Columns' dataSource={users} rowKey="_id"  className='tabla>
+                <Column className="Active"
                     title="Active"
                     key="action"
                     dataIndex="active"
+                    
                     render={(active, user) => (
-                        <Space size="middle">
+                        <Space size="small">
                             {/* CHECKBOX STATUS  */}
-                            <Checkbox
+                            <Checkbox className='checkbox'
                                 checked={active}
                                 onChange={(e) => {
                                     handleActiveStatus(e.target.checked, 'active', user._id)
@@ -50,19 +28,60 @@ export const ListaUsuarios = ({ functionDelete, handleRoleUser, users, handleAct
                         </Space>
                     )}
                 />
-                <Column
-                    title="Eliminar usuario"
+
+                <Column className="fullName"
+                    title="Nombre y Apellido" 
+                    dataIndex="fullName" 
+                    key="fullName" 
+                    
+                    />
+
+                <Column className="Email"
+                    title="Correo electrónico" 
+                    dataIndex="email" 
+                    key="email" 
+                    
+                />
+                <Column className="Role"
+                    title="Rol"
+                    dataIndex="role"
+                    key="role"
+                    render={(role) => (
+                        <span className='spanRole'>{role}</span>
+                    )}
+                    
+                />
+
+                <Column className="Actions"
+                    title="Editar"
+                    key="EditarUsuario"
+                    
+                    render={(user) => (
+                        <Space size="middle">
+                            <Button type="secondary" onClick={() => functionEditUser(user, user._id)}>
+                                <EditOutlined />
+                            </Button>
+                        </Space>
+                    )}
+                />
+
+                <Column className="Actions"
+                    title="Eliminar"
                     key="DeleteUser"
+                    
                     render={(user) => (
                         <Space size="middle">
                             {/* BOTON PARA BORRAR  */}
-                            <Button type='primary' danger onClick={() => functionDelete(user._id)}><DeleteOutlined /> </Button>
+                            <Button type='primary' className='BtnD' danger onClick={() => functionDelete(user._id)}><DeleteOutlined /></Button>
                         </Space>
                     )}
-
                 />
+                {/* <Pagination defaultCurrent={1} total={50} />; */}
+
             </Table>;
 
         </>
     )
+
 }
+
