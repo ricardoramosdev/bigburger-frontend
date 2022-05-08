@@ -1,23 +1,24 @@
-import { Menu, Switch } from 'antd'
-import React from 'react'
-import logo from '../../assets/img/logo-transparente.png'
 
-export const Header = () => {
-  return (
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Badge, Menu, Switch } from "antd";
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../../assets/img/logo-transparente.png";
+import "./Header.scss";
+export const Header = ({productsQty}) => {
+   return (
     <>
-    
-            
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                <Menu.Item key="0">
-            <img src={logo} className='logo'></img>
+      <div className="navbar">
+        <div>
+          <img src={logo} className="logo"></img>
+        </div>
+        <NavLink className="nav-cart" to="/cart">
+          <Badge count={productsQty} className='badge'size="small">
+            <ShoppingCartOutlined />
+          </Badge>
+        </NavLink>
+      </div>
 
-                </Menu.Item>
-                <Menu.Item key="1">Home</Menu.Item>
-                <Menu.Item key="2">Cart</Menu.Item>
-                <Menu.Item key="3">nav 3</Menu.Item>
-                <Menu.Item key="4"><Switch  /></Menu.Item>
-            </Menu>
-        
     </>
-  )
-}
+  );
+};

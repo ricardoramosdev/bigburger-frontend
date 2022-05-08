@@ -4,6 +4,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { EditUser } from './EditUser/EditUser'
 import { ListaUsuarios } from './userList/UserList'
+import { URL } from '../../constants/endpoints'
 
 export const User = () => {
     const [users, setUsers] = useState([]);
@@ -12,19 +13,19 @@ export const User = () => {
     const [dialogTitle, setDialogTitle] = useState('');
 
 
-
     async function loadUsers() {
-        const res = await axios.get(`http://localhost:3100/api/users`);
+        const res = await axios.get(`${URL}/users`);
         const usersDB = res.data.users;
         setUsers(usersDB);
         console.log(usersDB);
+
     }
 
     const handleDeleteUser = async (id) => {
         try {
             console.log(id)
             let userDE = users.find(user => user._id === id)
-            const deletedUser = await axios.delete(`http://localhost:3100/api/user/${id}`)
+            const deletedUser = await axios.delete(`${URL}/user/${id}`)
             console.log(deletedUser)
             const u = users.filter(user => user._id !== id);
             setUsers(u)
@@ -58,6 +59,7 @@ export const User = () => {
     }
 
     const handleOk = () => {
+
         setIsModalVisible(false);
     };
 
@@ -78,8 +80,8 @@ export const User = () => {
         try {
             const user = users.find(user => user._id === id);
             user[property] = value;
-            const updUser = await axios.put(`http://localhost:3100/api/user/${id}`, user)
-            console.log(updUser.data)
+
+            const updUser = await axios.put(`${URL}/user/${id}`, user)
             setUsers([...users])
             setDialogMessage(updUser.data.msg);
             if(user.active){
@@ -109,16 +111,16 @@ export const User = () => {
         <>
             <Typography.Title level={1}>Usuarios</Typography.Title>
             {/* <UserList/> */}
+
             <ListaUsuarios handleActiveStatus={handleActiveStatus} functionDelete={handleDeleteUser} users={users} functionEditUser={handleEditUser} />
             <Modal title={dialogTitle} visible={actionDialog} onOk={hiddeModal} onCancel={hiddeModal}>
                 {dialogMessage}
             </Modal>
             <Modal title="Editar usuario" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} handleEditUser={handleEditUser} >
                 <EditUser userToEdit={userToEdit} updateRole={updateRole}></EditUser>
+
             </Modal>
         </>
-
-
     )
 
 }

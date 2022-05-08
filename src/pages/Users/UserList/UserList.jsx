@@ -2,22 +2,13 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Checkbox, Button, Row, Pagination } from 'antd';
 import { Table, Space } from 'antd';
 import './userList.scss'
-
+import '../../Orders/OrderList/OrderList.scss'
 const { Column } = Table
-
-
 export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, functionEditUser}) => {
-
-    
-    // console.log(users)
-
-    // function onChange(pagination, filters, sorter, extra) {
-    //   console.log('params', pagination, filters, sorter, extra);
-    // }
 
     return (
         <>
-            <Table className='Columns' dataSource={users} rowKey="_id">
+            <Table className='Columns' dataSource={users} rowKey="_id"  className='tabla>
                 <Column className="Active"
                     title="Active"
                     key="action"
@@ -37,6 +28,7 @@ export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, funct
                         </Space>
                     )}
                 />
+
                 <Column className="fullName"
                     title="Nombre y Apellido" 
                     dataIndex="fullName" 
@@ -85,8 +77,11 @@ export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, funct
                     )}
                 />
                 {/* <Pagination defaultCurrent={1} total={50} />; */}
+
             </Table>;
 
         </>
     )
+
 }
+

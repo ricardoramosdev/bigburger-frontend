@@ -1,0 +1,56 @@
+@import '../../Context/Themes.scss';
+.themeSwitchContainer{
+    display: flex;
+    justify-content: center;
+    margin: 0.3rem;
+    // align-items: center;
+    // align-content: center;
+    // position:absolute;
+    // top:2rem;
+    // right: 2rem;
+    // width: 4rem;
+    // z-index: 1070;
+    // transform: translateY(-50%);
+    
+
+}
+.welcome-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translateX(-20%);
+}
+.welcomeText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color5);
+    text-align: center;
+    background-color: var(--color3);
+    width: 1.5rem;
+    height: 1.5rem;
+
+    aspect-ratio: 1 !important;
+    border-radius: 50%;
+    
+    
+}
+.d-none{
+    display: none !important;
+}
+.cart{
+    position: relative;
+}
+
+
+.ant-badge {
+    color: rgba(255, 255, 255, 0.65) !important;
+    font-weight: 400 !important;
+}
+.ant-badge-count{
+    transform: translate(150%, -45%) !important
+}
+.ant-layout-sider-trigger{
+    background-color: var(--color3) !important;
+}
