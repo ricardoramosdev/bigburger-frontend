@@ -5,7 +5,9 @@ import React, { useEffect, useState } from 'react'
 import  './ProductHome.scss'
 import { URL } from '../../../constants/endpoints'
 
+
 export const ProductHome = ({bCount}) => {
+
     const [products, productsState] = useState([])
     useEffect(() => {
         loadProducts()
@@ -20,6 +22,7 @@ export const ProductHome = ({bCount}) => {
             const productsDB = response.data.products
            
             productsState(productsDB);
+
         } catch (error) {
             Modal.error({
                 title: 'ERROR',
@@ -55,7 +58,9 @@ export const ProductHome = ({bCount}) => {
             top:70
           });
         localStorage.setItem('inCart',JSON.stringify(newCart))
+
         bCount(newCart)
+
     }
   return (
     <>

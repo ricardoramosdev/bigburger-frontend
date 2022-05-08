@@ -4,8 +4,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { URL } from "../../constants/endpoints";
 import "./Cart.scss";
+
 import { useAuth } from "../../auth/useAuth";
 export const Cart = ({bCount}) => {
+
 const auth = useAuth()
 
   const initialCart = JSON.parse(localStorage.getItem("inCart")) || [];
@@ -18,6 +20,7 @@ const auth = useAuth()
     const updateOrder = order.filter((item) => item._id !== id);
     setOrder(updateOrder);
     totalToPay()
+
     bCount(order)
   };
   
@@ -30,6 +33,7 @@ const auth = useAuth()
       setOrder(order)
       totalToPay()
       bCount(order)
+
    }
 
   const[ total, updTotal]=useState(0)
@@ -60,6 +64,7 @@ const auth = useAuth()
       okType: "ghost"
 
   })
+
    setOrder([])
   }
   
@@ -70,6 +75,7 @@ const auth = useAuth()
    }
   ,[order]
     
+
   )
 
   return (
@@ -104,9 +110,11 @@ const auth = useAuth()
         ))}
       </div>
       <div className="order-checkout">
+
       
         <div className="total-amount">
         <Typography.Title level={3}>Total: ${total||0}</Typography.Title></div>
+
         <button onClick={()=>sendOrder(auth.user,order,total)}>Confirmar Orden</button>
       </div>
     </>

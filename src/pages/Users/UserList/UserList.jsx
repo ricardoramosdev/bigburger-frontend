@@ -1,7 +1,9 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Checkbox, Button } from 'antd'
 import { Table, Space } from 'antd';
+
 import '../../Orders/OrderList/OrderList.scss'
+
 const { Column } = Table
 
 export const ListaUsuarios = ({ functionDelete, handleRoleUser, users, handleActiveStatus }) => {
@@ -11,7 +13,9 @@ export const ListaUsuarios = ({ functionDelete, handleRoleUser, users, handleAct
 
     return (
         <>
+
             <Table dataSource={users} className='tabla'>
+
                 <Column title="Nombre y Apellido" dataIndex="fullName" key="fullName" />
                 <Column title="Correo electrónico" dataIndex="email" key="email" />
                 <Column

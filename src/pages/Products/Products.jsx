@@ -87,6 +87,11 @@ export const Products = () => {
 
 
 
+    useEffect(() => {
+        loadProducts()
+    }, []);
+
+
 
 
     // CARGAR PRODUCTOS
@@ -162,9 +167,7 @@ export const Products = () => {
         setProductEditing(null)
     }
 
-    useEffect(() => {
-        loadProducts()
-    }, [productEditing,products, productEdit]);
+
 
 
     return (
@@ -187,7 +190,9 @@ export const Products = () => {
                 }}
                 onOk={() => {
                     productsState((pre) => {
+
                          pre.map((product) => {
+
                             if (product._id === productEditing._id) {
                                 return productEditing
                             }
@@ -247,7 +252,7 @@ export const Products = () => {
                     <Form.Item label="Precio">
                         <input className='inputEdit' type={"number"} value={productEditing?.price} onChange={(e) => {
                             setProductEditing((pre) => {
-                               
+
                                 return { ...pre, price: e.target.value }
                             })
                         }} />
@@ -279,6 +284,7 @@ export const Products = () => {
                     <Form.Item label="Stock">
                         <Checkbox checked={productEditing?.stock} onChange={(e) => {
                             setProductEditing((pre) => {
+
                                 return { ...pre, stock: e.target.checked }
                             })
                         }} />

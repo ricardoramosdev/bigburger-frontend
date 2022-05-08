@@ -6,7 +6,9 @@ import {
   EditOutlined,
   SettingOutlined,
   UserSwitchOutlined,
+
   ShoppingOutlined,
+
 } from "@ant-design/icons";
 
 import { Badge, Menu, Switch, Tooltip } from "antd";
@@ -14,6 +16,7 @@ import { useAuth } from "../../auth/useAuth";
 import "./Sidebar.scss";
 import { AdminRoute } from "../../routers/AdminRoute";
 import { Link, NavLink, Router, useLocation } from "react-router-dom";
+
 import menuItems from "./menuItems";
 
 export const Sidebar = ({productsQty}) => {
@@ -39,11 +42,13 @@ export const Sidebar = ({productsQty}) => {
   return (
     <>
       {/*       
+
       <div className="themeSwitchContainer">
         <Tooltip title="Light mode" placement="right">
           <Switch />
         </Tooltip>
       </div> */}
+
 
       <Menu theme="dark" /*defaultSelectedKeys={pathKey}*/ mode="inline">
         <Menu.Item key="1" icon={<HomeOutlined />}>
@@ -82,6 +87,7 @@ export const Sidebar = ({productsQty}) => {
           Logout
         </Menu.Item>
       </Menu>
+
     </>
   );
 };

@@ -15,6 +15,7 @@ export const User = () => {
         const res = await axios.get(`${URL}/users`);
         const usersDB = res.data.users;
         setUsers(usersDB);
+
     }
 
     const handleDeleteUser = async (id) => {

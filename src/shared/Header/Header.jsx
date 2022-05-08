@@ -1,3 +1,4 @@
+
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge, Menu, Switch } from "antd";
 import React, { useEffect } from "react";
@@ -17,6 +18,7 @@ export const Header = ({productsQty}) => {
           </Badge>
         </NavLink>
       </div>
+
     </>
   );
 };

@@ -1,6 +1,8 @@
 import { Layout } from "antd";
 
+
 import React, { useEffect, useState } from "react";
+
 import { Route, Routes } from "react-router-dom";
 import { AdminRoute } from "../../routers/AdminRoute";
 import { Footer } from "../../shared/Footer/Footer";
@@ -11,6 +13,7 @@ import { OrderList } from "../Orders/OrderList/OrderList";
 import { Products } from "../Products/Products";
 import { ProductHome } from "../Products/ProductsList/ProductHome";
 import { User } from "../Users/user";
+
 import { MyOrders } from "../Orders/OrderList/MyOrders";
 import "./Home.scss";
 
@@ -80,6 +83,7 @@ export const Home = () => {
           </Layout>
         </Layout>
         <Footer />
+
       </Layout>
     </>
   );
