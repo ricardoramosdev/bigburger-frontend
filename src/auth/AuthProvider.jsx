@@ -17,7 +17,7 @@ export const AuthProvider = ({children}) => {
             localStorage.setItem('userToken', JSON.stringify(login.data.token));
             
             setUser(login.data.user)
-            navigate('/home');
+            navigate('/');
         } catch (error) {
             console.log("Login fallido",error)
             
