@@ -3,7 +3,7 @@ import Column from 'antd/lib/table/Column'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { EditUser } from './EditUser/EditUser'
-import { ListaUsuarios } from './userList/UserList'
+import { ListaUsuarios } from './UserList/UserList'
 import { URL } from '../../constants/endpoints'
 
 export const User = () => {
