@@ -178,7 +178,7 @@ export const Products = () => {
     return (
         <>
             {/* INFORMACION PRINCIPAL */}
-            <div className='p10'>
+            <div>
                 <ProductsAdd addProduct={addProduct} totalProducts={totalProducts} />
                 <ProductList productsDBToList={products} deleteProduct={deleteModal} editModal={editProductModal} />
                 <h1>Total: {totalProducts}</h1>
