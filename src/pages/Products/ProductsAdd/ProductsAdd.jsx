@@ -3,7 +3,7 @@ import { Form, Input, Button, Select, InputNumber, Switch, Row, Col, Modal, } fr
 import axios from 'axios';
 import TextArea from 'antd/lib/input/TextArea';
 import { CloseOutlined } from '@ant-design/icons';
-
+import { useAuth } from '../../../auth/useAuth'
 import { URL } from '../../../constants/endpoints'
 const { Option } = Select;
 
@@ -11,10 +11,15 @@ const { Option } = Select;
 
 
 export const ProductsAdd = ({ addProduct }) => {
+    const auth= useAuth()
     const addNewProduct = async (formData) => {
 
         try {
-            const { data } = await axios.post(`${URL}/product`, formData );
+            const { data } = await axios.post(`${URL}/product`, formData, {
+                headers: {
+                    authorization:auth.token
+                }
+            } );
             console.log('dataOne', data.nuevoProducto)
             addProduct(data.nuevoProducto)
         } catch (error) {

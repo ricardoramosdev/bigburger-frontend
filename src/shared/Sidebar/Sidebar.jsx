@@ -52,27 +52,27 @@ export const Sidebar = ({productsQty}) => {
 
       <Menu theme="dark" /*defaultSelectedKeys={pathKey}*/ mode="inline">
         <Menu.Item key="1" icon={<HomeOutlined />}>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Inicio</NavLink>
         </Menu.Item>
         <Menu.Item key="2" icon={<ShoppingCartOutlined />} className="cart">
           <NavLink to="/cart">
             <Badge count={productsQty} size="small">
-              Cart
+              Carrito
             </Badge>
           </NavLink>
         </Menu.Item>
 
         <Menu.Item key="7" icon={<ShoppingOutlined />}>
-          <NavLink to="/myorder">My Orders</NavLink>
+          <NavLink to="/myorder">Ordenes</NavLink>
         </Menu.Item>
         <Menu.Item key="3" icon={<SettingOutlined />} hidden={!adminRole}>
-          <NavLink to="/orders">Orders Status</NavLink>
+          <NavLink to="/orders">Estado de Ordenes</NavLink>
         </Menu.Item>
         <Menu.Item key="4" icon={<UserSwitchOutlined />} hidden={!adminRole}>
-          <NavLink to="/users">Edit Users</NavLink>
+          <NavLink to="/users">Editar Usuarios</NavLink>
         </Menu.Item>
         <Menu.Item key="5" icon={<EditOutlined />} hidden={!adminRole}>
-          <NavLink to="/products">Edit Products</NavLink>
+          <NavLink to="/products">Editar Productos</NavLink>
         </Menu.Item>
 
         <Menu.Item
@@ -84,7 +84,7 @@ export const Sidebar = ({productsQty}) => {
           }
           onClick={() => userLogout()}
         >
-          Logout
+          Cerrar Sesión
         </Menu.Item>
       </Menu>
 

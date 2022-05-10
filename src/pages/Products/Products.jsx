@@ -6,12 +6,13 @@ import { ProductList } from './ProductsList/ProductList'
 import { CheckCircleOutlined, CloseOutlined, ExclamationCircleOutlined, WarningOutlined } from '@ant-design/icons'
 import TextArea from 'antd/lib/input/TextArea'
 import "./Products.css"
+import { useAuth } from '../../auth/useAuth'
 const URL = 'http://localhost:3100/api'
 const { Option } = Select;
 
 
 export const Products = () => {
-
+    const auth= useAuth()
     const [products, productsState] = useState([])
     const [totalProducts, totalProductsUpdate] = useState(0)
 
@@ -60,6 +61,9 @@ export const Products = () => {
             const deletedProduct = await axios.delete(`${URL}/product/`, {
                 params: {
                     product_id_delete: id
+                },
+                headers: {
+                    authorization:auth.token
                 }
             });
             const newArrayDelete = products.filter(prod => prod._id !== id)
@@ -210,6 +214,9 @@ export const Products = () => {
                             await axios.put(`${URL}/product/upd_id`, productEditing, {
                                 params: {
                                     updateId: productEditing._id
+                                },
+                                headers: {
+                                    authorization:auth.token
                                 }
                             })
                             Modal.info({
