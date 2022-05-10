@@ -8,6 +8,8 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
+    const [token, setToken] = useState(JSON.parse(localStorage.getItem("userToken")));
+
     const navigate = useNavigate();
     // const [loginError, showLoginError] = useState(false)
     // const [errorMsg, setErrorMsg] = useState('')
@@ -15,7 +17,7 @@ export const AuthProvider = ({children}) => {
         try {
             const login = await axios.post(`${URL}/login`, userLogin);
             localStorage.setItem('userToken', JSON.stringify(login.data.token));
-            
+            setToken(login.data.token)
             setUser(login.data.user)
             navigate('/');
         } catch (error) {
@@ -46,6 +48,7 @@ export const AuthProvider = ({children}) => {
         user,
         login,
         logout,
+        token
     }
     return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>
 }

@@ -5,8 +5,10 @@ import React, { useEffect, useState } from 'react'
 import { EditUser } from './EditUser/EditUser'
 import { ListaUsuarios } from './userList/UserList'
 import { URL } from '../../constants/endpoints'
+import { useAuth } from '../../auth/useAuth'
 
 export const User = () => {
+    const auth= useAuth()
     const [users, setUsers] = useState([]);
     const [actionDialog, toggleActionDialog] = useState(false);
     const [dialogMessage, setDialogMessage] = useState('');
@@ -14,7 +16,9 @@ export const User = () => {
 
 
     async function loadUsers() {
-        const res = await axios.get(`${URL}/users`);
+        const res = await axios.get(`${URL}/users`,{
+            headers:{authorization:auth.token}
+        });
         console.log(res)
         const usersDB = res.data.users;
         setUsers(usersDB);
@@ -26,7 +30,9 @@ export const User = () => {
         try {
             console.log(id)
             let userDE = users.find(user => user._id === id)
-            const deletedUser = await axios.delete(`${URL}/user/${id}`)
+            const deletedUser = await axios.delete(`${URL}/user/${id}`,{
+                headers:{authorization:auth.token}
+            })
             console.log(deletedUser)
             const u = users.filter(user => user._id !== id);
             setUsers(u)
@@ -70,7 +76,9 @@ export const User = () => {
     };
 
     const updateRole = async (userUpdated) => {
-        await axios.put(`${URL}/user/${userUpdated._id}`, userUpdated);
+        await axios.put(`${URL}/user/${userUpdated._id}`, userUpdated,{
+            headers:{authorization:auth.token}
+        });
         // setIsModalVisible(false)
         loadUsers();
     }
@@ -82,7 +90,9 @@ export const User = () => {
             const user = users.find(user => user._id === id);
             user[property] = value;
 
-            const updUser = await axios.put(`${URL}/user/${id}`, user)
+            const updUser = await axios.put(`${URL}/user/${id}`, user,{
+                headers:{authorization:auth.token}
+            })
             setUsers([...users])
             setDialogMessage(updUser.data.msg);
             if(user.active){
