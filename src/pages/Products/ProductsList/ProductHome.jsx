@@ -37,7 +37,7 @@ export const ProductHome = ({bCount}) => {
     //Agregar al carrito
     const addToCart = (id)=>{
         const productSelected = products.find(el=>el._id==id)
-        const inCart = JSON.parse(localStorage.getItem('inCart'))
+        const inCart = JSON.parse(localStorage.getItem('inCart'))||[]
         const itemInCart = inCart.find(item=>item._id===productSelected._id)
         let newCart=[];
         itemInCart?

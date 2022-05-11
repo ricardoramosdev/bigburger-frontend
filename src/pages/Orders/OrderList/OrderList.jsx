@@ -4,11 +4,13 @@ import { Option } from 'antd/lib/mentions';
 
 import axios, { Axios } from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useAuth } from '../../../auth/useAuth';
 import { URL } from '../../../constants/endpoints';
 import './OrderList.scss'
 
 export const OrderList = () => {
   const[orders, updOrders] = useState()
+  const auth= useAuth()
   //Traer ordenes de la base de datos
   const getOrders = async ()=>{
     try{
@@ -36,7 +38,11 @@ const handleOrderStatus= async (id,e)=>{
   //obtener el pedido q se va  a modifica
   //cambiar la propiedad state
   //enviar a base de datos con put
- const orderUd = await axios.put(`${URL}/order/${id}`,{state:e})
+ const orderUd = await axios.put(`${URL}/order/${id}`,{state:e},{
+  headers: {
+    authorization:auth.token
+}
+})
 }
 
   useEffect(() => {
