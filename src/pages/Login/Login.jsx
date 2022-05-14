@@ -143,24 +143,50 @@ export const Login = () => {
             name={"fullName"}
             rules={[{ required: validationOn, message: "Ingrese un nombre válido!" }]}
           >
-            <Input maxLength={30}/>
+            <Input maxLength={30} type='string'/>
           </Form.Item>
           <Form.Item
             label="Email"
             name={"email"}
-            rules={[{ required: validationOn, message: "Ingrese un email válido!" }]}
+            rules={[{ required: validationOn, message: "Ingrese un email válido!" },{
+              type: 'email',
+              message: 'Ingrese un email válido!',
+            },]}
           >
-            <Input maxLength={30}/>
+            <Input maxLength={30} />
           </Form.Item>
 
           <Form.Item
             label="Contraseña"
             name={"password"}
-            rules={[{ required: validationOn, message: "Ingrese una contraseña!" }]}
+            rules={[{ required: validationOn, message: "Ingrese una contraseña!" }, {min:8,message:"La contraseña debe tener 8 o más caracteres"}]}
+            hasFeedback
           >
             <Input.Password maxLength={30}/>
           </Form.Item>
-
+            
+          <Form.Item
+            name="confirm"
+            label="Confirmar Contraseña"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Este campo debe ser rellenado',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('La contraseña no coincide con la ingresada!'));
+                },
+              }),
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
               Register
