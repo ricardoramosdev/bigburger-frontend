@@ -1,7 +1,7 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Checkbox, Button, Row, Pagination } from 'antd';
 import { Table, Space } from 'antd';
-import './userList.scss'
+import './UserList.scss'
 import '../../Orders/OrderList/OrderList.scss'
 const { Column } = Table
 export const ListaUsuarios = ({ functionDelete, handleActiveStatus, users, functionEditUser}) => {

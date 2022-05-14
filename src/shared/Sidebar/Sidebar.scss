@@ -1,16 +1,19 @@
 @import '../../Context/Themes.scss';
+
+.sider{
+  
+    overflow: auto;
+    position: sticky;
+    left: 0;
+    top: 64px;
+    bottom: 0;
+    li.ant-menu-item{margin-top: 0;}
+  }
 .themeSwitchContainer{
     display: flex;
     justify-content: center;
     margin: 0.3rem;
-    // align-items: center;
-    // align-content: center;
-    // position:absolute;
-    // top:2rem;
-    // right: 2rem;
-    // width: 4rem;
-    // z-index: 1070;
-    // transform: translateY(-50%);
+    
     
 
 }

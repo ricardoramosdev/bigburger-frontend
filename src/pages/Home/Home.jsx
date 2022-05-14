@@ -12,7 +12,7 @@ import { Cart } from "../Orders/Cart";
 import { OrderList } from "../Orders/OrderList/OrderList";
 import { Products } from "../Products/Products";
 import { ProductHome } from "../Products/ProductsList/ProductHome";
-import { User } from "../Users/user";
+import { User } from "../Users/User";
 
 import { MyOrders } from "../Orders/OrderList/MyOrders";
 import "./Home.scss";
@@ -37,16 +37,20 @@ export const Home = () => {
       <Layout style={{ minHeight: "100vh" }}>
         <Header productsQty={productsQty}/>
         <Layout className="fullHeight">
-          <Sider className="fullHeight" breakpoint="lg" collapsedWidth="60px">
+          <Sider  breakpoint="lg" collapsedWidth="60px"   style={{
+       
+      }}>
             <Sidebar productsQty={productsQty} />
           </Sider>
-          <Layout>
+          
             <Content
-              className="site-layout-background"
+              className="site-layout-background" 
+              breakpoint="lg" 
               style={{
                 padding: 24,
                 margin: 0,
                 minHeight: 280,
+                width:'100%'
               }}
             >
               <Routes>
@@ -80,7 +84,7 @@ export const Home = () => {
                 />
               </Routes>
             </Content>
-          </Layout>
+          
         </Layout>
         <Footer />
 

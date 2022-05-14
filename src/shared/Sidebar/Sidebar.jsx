@@ -14,21 +14,9 @@ import {
 import { Badge, Menu, Switch, Tooltip } from "antd";
 import { useAuth } from "../../auth/useAuth";
 import "./Sidebar.scss";
-import { AdminRoute } from "../../routers/AdminRoute";
 import { Link, NavLink, Router, useLocation } from "react-router-dom";
 
-import menuItems from "./menuItems";
-
 export const Sidebar = ({productsQty}) => {
-
-  //Mantener seleccion de menu activa tras recargar la pagina
-  // const[pathKey, setPathKey]=useState(null)
-  // const useCurrentPath =()=>{
-  //   const {pathname}= useLocation()
-  //   const {id}=menuItems.find(item=>'url'==pathname)
-  //   setPathKey(id)
-  // }
-
 
   const auth = useAuth();
   const userLogout = () => {
@@ -41,16 +29,9 @@ export const Sidebar = ({productsQty}) => {
 
   return (
     <>
-      {/*       
+    
 
-      <div className="themeSwitchContainer">
-        <Tooltip title="Light mode" placement="right">
-          <Switch />
-        </Tooltip>
-      </div> */}
-
-
-      <Menu theme="dark" /*defaultSelectedKeys={pathKey}*/ mode="inline">
+      <Menu theme="dark"  mode="inline" className="sider">
         <Menu.Item key="1" icon={<HomeOutlined />}>
           <NavLink to="/">Inicio</NavLink>
         </Menu.Item>
