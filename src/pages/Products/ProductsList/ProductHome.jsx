@@ -3,8 +3,9 @@ import { Card, Col, InputNumber, Modal, notification, Row } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import  './ProductHome.scss'
-import { URL } from '../../../constants/endpoints'
+// import { URL } from '../../../constants/endpoints'
 
+const URL = process.env.REACT_APP_API_URL;
 
 export const ProductHome = ({bCount}) => {
 

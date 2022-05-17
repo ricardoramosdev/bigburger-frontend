@@ -7,9 +7,10 @@ import { CheckCircleOutlined, CloseOutlined, ExclamationCircleOutlined, WarningO
 import TextArea from 'antd/lib/input/TextArea'
 import "./Products.css"
 import { useAuth } from '../../auth/useAuth'
-const URL = 'http://localhost:3100/api'
+// const URL = 'http://localhost:3100/api'
 const { Option } = Select;
 
+const URL = process.env.REACT_APP_API_URL;
 
 export const Products = () => {
     const auth= useAuth()

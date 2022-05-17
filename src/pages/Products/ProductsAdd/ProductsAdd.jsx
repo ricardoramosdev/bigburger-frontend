@@ -4,8 +4,10 @@ import axios from 'axios';
 import TextArea from 'antd/lib/input/TextArea';
 import { CloseOutlined } from '@ant-design/icons';
 import { useAuth } from '../../../auth/useAuth'
-import { URL } from '../../../constants/endpoints'
+// import { URL } from '../../../constants/endpoints'
 const { Option } = Select;
+
+const URL = process.env.REACT_APP_API_URL;
 
 
 

@@ -5,8 +5,10 @@ import { Option } from 'antd/lib/mentions';
 import axios, { Axios } from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../auth/useAuth';
-import { URL } from '../../../constants/endpoints';
+// import { URL } from '../../../constants/endpoints';
 import './OrderList.scss'
+
+const URL = process.env.REACT_APP_API_URL;
 
 export const OrderList = () => {
   const[orders, updOrders] = useState()
