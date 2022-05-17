@@ -12,7 +12,7 @@ import { Cart } from "../Orders/Cart";
 import { OrderList } from "../Orders/OrderList/OrderList";
 import { Products } from "../Products/Products";
 import { ProductHome } from "../Products/ProductsList/ProductHome";
-import { User } from "../Users/User";
+import { User} from "../Users/User"
 
 import { MyOrders } from "../Orders/OrderList/MyOrders";
 import "./Home.scss";
