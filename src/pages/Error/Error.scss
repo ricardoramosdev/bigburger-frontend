@@ -1,0 +1,23 @@
+.error404{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    background-image: url(https://www.seekpng.com/png/full/813-8134616_national-burger-day-hamburger-with-flying-ingredients.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    
+    button{
+        width: 3rem;
+
+    }
+    .button{
+        color: white !important;
+    }
+    
+}
