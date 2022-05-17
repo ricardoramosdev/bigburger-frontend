@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import logo from '../../assets/img/logo-transparente.png'
 import { Header } from "../../shared/Header/Header";
 import  "./Login.scss"
-import { URL } from "../../constants/endpoints";
+// import { URL } from "../../constants/endpoints";
 import axios from "axios";
 import { useAuth } from "../../auth/useAuth";
 import { CheckCircleOutlined } from "@ant-design/icons";
 
+const URL = process.env.REACT_APP_API_URL;
 
 export const Login = () => {
   

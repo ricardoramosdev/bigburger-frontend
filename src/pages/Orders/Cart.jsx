@@ -2,10 +2,10 @@ import { CheckCircleOutlined, DeleteOutlined } from "@ant-design/icons";
 import { InputNumber, Layout, Modal, PageHeader, Typography } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { URL } from "../../constants/endpoints";
+// import { URL } from "../../constants/endpoints";
 import "./Cart.scss";
-
 import { useAuth } from "../../auth/useAuth";
+const URL = process.env.REACT_APP_API_URL;
 export const Cart = ({bCount}) => {
 
 const auth = useAuth()

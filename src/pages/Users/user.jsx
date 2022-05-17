@@ -4,8 +4,9 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { EditUser } from './EditUser/EditUser'
 import { ListaUsuarios } from './UserList/UserList'
-import { URL } from '../../constants/endpoints'
+// import { URL } from '../../constants/endpoints'
 import { useAuth } from '../../auth/useAuth'
+const URL = process.env.REACT_APP_API_URL;
 
 export const User = () => {
     const auth= useAuth()

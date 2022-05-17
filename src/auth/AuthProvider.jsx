@@ -1,11 +1,12 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { URL } from "../constants/endpoints";
-
+// import { URL } from "../constants/endpoints";
+const URL = process.env.REACT_APP_API_URL;
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
+
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
     const [token, setToken] = useState(JSON.parse(localStorage.getItem("userToken")));
