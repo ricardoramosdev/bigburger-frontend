@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { URL } from "../constants/endpoints";
-const URL = process.env.REACT_APP_API_URL;
+const URL = "https://bigburger-backend.herokuapp.com/api";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
