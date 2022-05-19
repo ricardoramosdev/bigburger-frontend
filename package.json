@@ -4,7 +4,7 @@
   "engines": {
     "node": "14.17.0",
     "npm": "6.14.13"
-},
+  },
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.19.5",
     "axios": "^0.26.1",
+    "dotenv": "^16.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
