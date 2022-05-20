@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import  './ProductHome.scss'
 // import { URL } from '../../../constants/endpoints'
 
-const URL = process.env.REACT_APP_API_URL;
+const URL = process.env.PUBLIC_URL;
 
 export const ProductHome = ({bCount}) => {
 
