@@ -20,11 +20,8 @@ export const User = () => {
         const res = await axios.get(`${URL}/users`,{
             headers:{authorization:auth.token}
         });
-        console.log(res)
         const usersDB = res.data.users;
         setUsers(usersDB);
-        console.log(usersDB);
-
     }
 
     const handleDeleteUser = async (id) => {
@@ -37,7 +34,6 @@ export const User = () => {
             console.log(deletedUser)
             const u = users.filter(user => user._id !== id);
             setUsers(u)
-            console.log(u)
             setDialogMessage(deletedUser.data.msg);
             setDialogTitle(`USUARIO: "${userDE.fullName}" ELIMINADO`)
             toggleActionDialog(true)
@@ -54,10 +50,8 @@ export const User = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [userToEdit, setUserToEdit] = useState(null)
     const handleEditUser = async (user, id) => {
-        console.log(id)
         try {
             const userEditing = users.find(user => user._id === id);
-            console.log(userEditing)
             setUserToEdit(userEditing)
             setIsModalVisible(true);
         }
