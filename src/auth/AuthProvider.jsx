@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { URL } from "../constants/endpoints";
-const URL = "https://bigburger-backend.herokuapp.com/api";
+const URL = process.env.REACT_APP_API_URL;
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
@@ -17,8 +17,8 @@ export const AuthProvider = ({children}) => {
     // const [errorMsg, setErrorMsg] = useState('')
     async function login(userLogin) {
         try {
-            console.log(userLogin);
-            const login = await axios.post(`localhost:3100/api/login`, userLogin);
+            
+            const login = await axios.post(`${URL}/login`, userLogin);
             localStorage.setItem('userToken', JSON.stringify(login.data.token));
             setToken(login.data.token)
             setUser(login.data.user)
