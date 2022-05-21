@@ -8,7 +8,6 @@ import './EditUser.scss'
 const { Option } = Select;
 
 export const EditUser = ({ userToEdit, updateRole }) => {
-    console.log(userToEdit.role)
 
     function handleChange(event){
         const user = userToEdit;

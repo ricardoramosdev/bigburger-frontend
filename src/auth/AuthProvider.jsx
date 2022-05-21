@@ -11,12 +11,14 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
     const [token, setToken] = useState(JSON.parse(localStorage.getItem('userToken'))||[]);
 
+
     const navigate = useNavigate();
     // const [loginError, showLoginError] = useState(false)
     // const [errorMsg, setErrorMsg] = useState('')
     async function login(userLogin) {
         try {
-            const login = await axios.post(`${URL}/login`, userLogin);
+            console.log(userLogin);
+            const login = await axios.post(`localhost:3100/api/login`, userLogin);
             localStorage.setItem('userToken', JSON.stringify(login.data.token));
             setToken(login.data.token)
             setUser(login.data.user)
