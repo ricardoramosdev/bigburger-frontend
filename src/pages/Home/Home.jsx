@@ -16,6 +16,7 @@ import { User } from "../Users/user";
 
 import { MyOrders } from "../Orders/OrderList/MyOrders";
 import "./Home.scss";
+import { Error } from "../Error/Error";
 
 const { Content, Sider } = Layout;
 export const Home = () => {
@@ -54,6 +55,7 @@ export const Home = () => {
               }}
             >
               <Routes>
+                <Route path="/*" element={<Error />} />
                 <Route path="/" element={<ProductHome bCount={(b)=>bCount(b)} />} />
                 <Route path="/cart" element={<Cart bCount={(b)=>bCount(b)} />} />
                 <Route path="/myorder" element={<MyOrders />} />
