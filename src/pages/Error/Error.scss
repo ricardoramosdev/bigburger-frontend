@@ -11,7 +11,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
-    
+    .error{
+        color: white;
+        text-shadow: 3px 3px 1px black;
+    }
     button{
         width: 3rem;
 

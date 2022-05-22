@@ -8,7 +8,7 @@ export const Error = () => {
     <section className="error404">
         
         <div className="error">
-            <Typography.Title level="2">Algun ingrediente salio mal</Typography.Title>
+            <Typography.Title  className="error" level="2">Algun ingrediente salio mal</Typography.Title>
         </div>
         <button><NavLink className="button" to="/">Inicio</NavLink></button>
     </section>
