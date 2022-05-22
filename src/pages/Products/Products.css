@@ -42,6 +42,11 @@
 
 }
 
+.tableIMG {
+    width: 120px;
+    height: 100px;
+}
+
 @media screen and (max-width: 991px) {
     .addProduct{
         margin: auto;

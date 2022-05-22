@@ -54,15 +54,15 @@ export const ProductsAdd = ({ addProduct }) => {
 
                         <Col xs={24} lg={24}>
                             {/* NOMBRE */}
-                            <Form.Item label="Nombre" name={"name"} rules={[{ maxlength: 40, minlength: 2  ,required: true }]}>
-                                <Input placeholder="Ingrese el nombre del producto" />
+                            <Form.Item label="Nombre" name={"name"} rules={[{required: true }]}>
+                                <Input minLength={2} maxLength={40} placeholder="Ingrese el nombre del producto" />
                             </Form.Item>
                         </Col>
 
                         <Col xs={24} lg={24}>
                             {/* DESCRIPTION */}
-                            <Form.Item label="Descripcion" name={"description"} rules={[{ maxlength: 250, minlength:1 ,required: true }]}>
-                                <TextArea placeholder="Ingrese la descripcion del producto" rows={3} />
+                            <Form.Item label="Descripcion" name={"description"} rules={[{required: true }]}>
+                                <TextArea placeholder="Ingrese la descripcion del producto" rows={3} minLength={1} maxLength={250}/>
                             </Form.Item>
                         </Col>
 
