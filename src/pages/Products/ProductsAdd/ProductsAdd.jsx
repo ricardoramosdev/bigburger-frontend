@@ -28,13 +28,13 @@ export const ProductsAdd = ({ addProduct }) => {
             Modal.info({
                 title: 'Ocurrió un error al cargar el producto',
                 icon: <CloseOutlined style={{ color:"#f80000" }}/>,
-                content: `No se pudo establecer conexion con la base de datos`,
+                content: `Revise los datos e intente nuevamente`,
                 okText: 'Ok',
                 okType: "danger"
                 
             })
         }
-        
+        document.getElementById("productsForm").reset()
     }
 
     return (
@@ -48,19 +48,20 @@ export const ProductsAdd = ({ addProduct }) => {
                     name="product"
                     onFinish={addNewProduct}
                     initialValues={{ stock: true, price: 0 }}
+                    id="productsForm"
                 >
                     <Row gutter={16}>
 
                         <Col xs={24} lg={24}>
                             {/* NOMBRE */}
-                            <Form.Item label="Nombre" name={"name"} rules={[{ maxlength: 60, minlength: 2  ,required: true }]}>
+                            <Form.Item label="Nombre" name={"name"} rules={[{ maxlength: 40, minlength: 2  ,required: true }]}>
                                 <Input placeholder="Ingrese el nombre del producto" />
                             </Form.Item>
                         </Col>
 
                         <Col xs={24} lg={24}>
                             {/* DESCRIPTION */}
-                            <Form.Item label="Descripcion" name={"description"} rules={[{ maxlength: 250, required: true }]}>
+                            <Form.Item label="Descripcion" name={"description"} rules={[{ maxlength: 250, minlength:1 ,required: true }]}>
                                 <TextArea placeholder="Ingrese la descripcion del producto" rows={3} />
                             </Form.Item>
                         </Col>
