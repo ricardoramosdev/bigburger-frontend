@@ -54,21 +54,21 @@ export const ProductsAdd = ({ addProduct }) => {
 
                         <Col xs={24} lg={24}>
                             {/* NOMBRE */}
-                            <Form.Item label="Nombre" name={"name"} rules={[{required: true }]}>
+                            <Form.Item label="Nombre" name={"name"} rules={[{required: true, message: "Ingrese un nombre válido" }]}>
                                 <Input minLength={2} maxLength={40} placeholder="Ingrese el nombre del producto" />
                             </Form.Item>
                         </Col>
 
                         <Col xs={24} lg={24}>
                             {/* DESCRIPTION */}
-                            <Form.Item label="Descripcion" name={"description"} rules={[{required: true }]}>
+                            <Form.Item label="Descripcion" name={"description"} rules={[{required: true, message: "Ingrese una descripcion válida" }]}>
                                 <TextArea placeholder="Ingrese la descripcion del producto" rows={3} minLength={1} maxLength={250}/>
                             </Form.Item>
                         </Col>
 
                         <Col xs={24} lg={24}>
                             {/* IMAGEN */}
-                            <Form.Item label="Imagen" name={"IMG"} rules={[{ required: true }]}>
+                            <Form.Item label="Imagen" name={"IMG"} rules={[{ required: true, message: "Ingrese una imagen" }]}>
                                 <Input placeholder="Ingrese la imagen del producto" />
                             </Form.Item>
                         </Col>
@@ -76,7 +76,7 @@ export const ProductsAdd = ({ addProduct }) => {
                         <Col xs={12} lg={12}>
                             {/* PRECIO */}
 
-                            <Form.Item label="Precio" name={"price"} rules={[{ type: 'number', min: 1, max: 10000, required: true }]}>
+                            <Form.Item label="Precio" name={"price"} rules={[{ type: 'number', min: 1, max: 10000, required: true, message: "El precio debe ser entre 1 y 10000" }]}>
 
                                 <InputNumber placeholder="Ingrese el precio del producto" addonBefore="$" />
                             </Form.Item>
@@ -84,7 +84,7 @@ export const ProductsAdd = ({ addProduct }) => {
 
                         <Col xs={12} lg={12}>
                             {/* CATEGORIA */}
-                            <Form.Item label="Categoría" name={"categorie_id"} rules={[{ required: true }]}>
+                            <Form.Item label="Categoría" name={"categorie_id"} rules={[{ required: true, message: "Ingrese la categoría" }]}>
                                 <Select>
                                     <Option value="Simples">Simples</Option>
                                     <Option value="Dobles">Dobles</Option>
