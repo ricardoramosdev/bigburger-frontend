@@ -67,14 +67,14 @@ export const Login = () => {
         initialValues={{
           remember: true,
         }}
-        autoComplete="off"
+        autoComplete="on"
         className=" formBlock"
         onFinish={onLogin}
       >
         <Form.Item
           label="Email"
           name={"email"}
-          initialValue="ricardoadm@gmail.com"
+          
           rules={[
             {
               required: validationOn,
@@ -83,13 +83,13 @@ export const Login = () => {
           ]}
           
         >
-          <Input maxLength={30}/>
+          <Input maxLength={30} placeholder="big@burger.com"/>
         </Form.Item>
 
         <Form.Item
           label="Password"
           name={"password"}
-          initialValue="administrador"
+          
           rules={[
             {
               required: validationOn,
