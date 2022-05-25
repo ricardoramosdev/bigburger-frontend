@@ -244,37 +244,34 @@ export const Products = () => {
                 }}
             >
 
-                {/* FORMULARIO PARA EDITAR JUEGO */}
+                {/* FORMULARIO PARA EDITAR MENU */}
                 <Form layout='vertical'>
-                    <Form.Item label="Nombre">
-                        <Input value={productEditing?.name} onChange={(e) => {
+                    <Form.Item label="Nombre" rules={[{required: true,  minLength: 2, maxLength:40 }]} >
+                        <Input name='hola' required minLength={2} maxLength={40} value={productEditing?.name} onChange={(e) => {
                             setProductEditing((pre) => {
                                 return { ...pre, name: e.target.value }
                             })
                         }} />
                     </Form.Item>
 
-                    <Form.Item label="Descripcion">
-                        <TextArea value={productEditing?.description} onChange={(e) => {
+                    <Form.Item label="Descripcion" rules={[{required: true,  minLength: 1, maxLength:250 }]}>
+                        <TextArea required minLength={1} maxLength={250} value={productEditing?.description} onChange={(e) => {
                             setProductEditing((pre) => {
                                 return { ...pre, description: e.target.value }
                             })
                         }} />
                     </Form.Item>
 
-                    <Form.Item label="Precio">
-                        <input className='inputEdit' type={"number"} value={productEditing?.price} onChange={(e) => {
+                    <Form.Item label="Precio" rules={[{required: true,  min: 1, max:10000 }]}>
+                        <input type={"number"} required min={1} max={10000} className='inputEdit' value={productEditing?.price} onChange={(e) => {
                             setProductEditing((pre) => {
-
-
-
                                 return { ...pre, price: e.target.value }
                             })
                         }} />
                     </Form.Item>
 
-                    <Form.Item label="Categoría">
-                        <select value={productEditing?.categorie_id} 
+                    <Form.Item label="Categoría" rules={[{required: true}]}>
+                        <select required value={productEditing?.categorie_id} 
                         className='inputEdit'
                         onChange={(e) => {
                             setProductEditing((pre) => {
@@ -288,7 +285,7 @@ export const Products = () => {
                         </select>
                     </Form.Item>
 
-                    <Form.Item label="Imagen">
+                    <Form.Item label="Imagen" rules={[{required: true }]}>
                         <Input value={productEditing?.IMG} onChange={(e) => {
                             setProductEditing((pre) => {
                                 return { ...pre, IMG: e.target.value }
@@ -299,7 +296,6 @@ export const Products = () => {
                     <Form.Item label="Stock">
                         <Checkbox checked={productEditing?.stock} onChange={(e) => {
                             setProductEditing((pre) => {
-
                                 return { ...pre, stock: e.target.checked }
                             })
                         }} />

@@ -48,7 +48,7 @@ export const ProductList = ({ productsDBToList, deleteProduct, editModal }) => {
             render: (fila) => (
 
                 
-                <Image src={fila.IMG ? fila.IMG : null} />
+                <Image src={fila.IMG ? fila.IMG : null} className={"tableIMG"}/>
             ) 
         },
         {
